@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+/* CONFIGURACION RAPIDA */
+* {
+	margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+}
+
+:root{
+	--color-primary: rgba(0, 176, 80, 1);
+	--font-primary: 'Fjalla One';
+	--font-secundary: arial;
+}
+
+a{	text-decoration: none; }
+
+li{	list-style: none; }
+
+.clear{	clear: both; }
+
+.margin{
+    margin-top: 5em;
+}
+/* HEADER-MENU-INGRESO */
+header{
+	display: block;
+	float: left;
+	width: 100%;
+	background: var(--color-primary);
+	height: 100px;
+	font-family: var(--font-primary) ;
+}
+
+.title, .menu, .ingreso, .cat_menu{	float: left;	}
+
+.title_a, .menu_a, .ingreso a{
+	color: #fff;
+	line-height: 100px;
+	transition: all 500ms;
+}
+
+.title_a, .menu_a{	padding: 1em;	}
+
+.title{	font-size: 2em;	}
+
+.menu, .ingreso{	margin-left: 20%;	}
+
+.ingreso a{	padding: 1em .5em; }
+
+.menu_a:hover{	border-bottom: 1px solid orange;	}
+.ingreso a:hover{ background: orange;}
+
+.subcat_menu li{
+	float: left;
+}
+
+.subcat_menu{
+	clear: both;
+    position: absolute;
+    background: orange;
+    padding: .5em;
+	top: 50px;
+	left: 25%;
+	z-index: -10;
+	transition: all 500ms;
+}
+
+.cat_menu:hover .subcat_menu{
+	z-index: 1;
+	top: 100px;
+}
+
+.subcat_a{
+	clear: both;
+	padding: .3em;
+	color: white;
+	transition: all 500ms;
+}
+
+.subcat_a:hover{
+	color: var(--color-primary);
+}
+
+/* NOTICIAS Y DESTACADO DEL BLOG */
+main{
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+}
+
+.grid_1, .grid_2, .grid_3 {
+    border: 2px solid var(--color-primary);
+    padding: 1em;
+    transition: all 500ms;
+}
+
+.grid_1:hover, .grid_2:hover, .grid_3:hover{
+    background: var(--color-primary);
+    color: white;
+}
+
+.grid img{
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.grid p{
+    text-align: center;
+    margin-top: 2em;
+}
+
+/* DISEÑO DE BOTONES */
+.i_button{
+	float: right;
+	margin: auto;
+	margin-top: 1.1em;
+	margin-right: 10px;
+	padding: .3em;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid var(--color-primary) ;
+	font-family: arial;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: rgba(0,0,0,.6);
+	transition: all 500ms;
+  }
+
+.i_button:hover{
+    background: var(--color-primary);
+    color: white;
+}
+
+/* FOOTER */
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}

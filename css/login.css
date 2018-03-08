@@ -1,0 +1,116 @@
+/*ESTILOS POR DEFECTO*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --color-primary: rgba(0, 176, 80, 1);
+}
+
+.center{
+  text-align: center;
+}
+
+.margin_top{
+  margin-top: 100px;
+}
+/*ESTILOS DE LA CAJA DERECHA*/
+.izq{
+  display: flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100vh;
+  background: rgba(0, 176, 80, 1);
+}
+
+.p_title{
+  color: #fff;
+  font-size: 5em;
+  font-family: arial;
+}
+
+.line{
+  display: inline-block;
+  border: 1px solid hsl(147, 100%, 45%);
+  width: 40%;
+}
+
+.p_subtitle{
+  color: #fff;
+  font-family: arial;
+  font-size: 2em;
+}
+
+/*ESTILOS DE LA CAJA IZQUIERDA*/
+
+.der{
+  float: left;
+  width: 60%;
+}
+
+.div_center{
+  width: 80%;
+  margin: auto;
+}
+
+img{
+  display: block;
+  width: 20%;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+form{
+  width: 50%;
+  margin: auto;
+}
+
+label{
+  margin-bottom: .5em;
+  width: 100%;
+  display: block;
+  font-family: arial;
+  font-size: 1em;
+  font-weight: bold;
+  color: rgba(0,0,0,.6);
+}
+
+.data input{
+  margin-bottom: .7em;
+  display: block;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.i_button{
+  display: block;
+  margin: auto;
+  margin-top: 1.1em;
+  padding: .7em;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(0, 176, 80, 1);
+  font-family: arial;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: rgba(0,0,0,.6);
+  transition: all 500ms;
+}
+
+.i_button:hover{
+  background: var(--color-primary);
+  color: white;
+}
+
+.register{
+  display: block;
+  text-align: center;
+  margin-top: 1em;
+  text-decoration: none;
+  color:rgba(0, 176, 80, 1);
+  font-family: arial;
+}
