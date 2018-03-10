@@ -22,18 +22,21 @@
 			<div class="margin_top"></div>
 			<div class="div_center">
 				<img src="images/usuario.svg" alt="">
-				<form action="" method="">
+				<form action="php/registro.php" method="POST">
 					<div class="data">
-						<input type="text" name="user" value="" placeholder="Nombre">
+						<input type="text" name="nom" placeholder="Nombre" required>
 					</div>
 					<div class="data">
-						<input type="text" name="pass" value="" placeholder="Apellidos">
+						<input type="text" name="ape" placeholder="Apellidos" required>
 					</div>
 					<div class="data">
-						<input type="email" name="pass" value="" placeholder="Correo">
+						<input type="text" name="user" placeholder="Usuario" required>
 					</div>
 					<div class="data">
-						<input type="password" name="pass" value="" placeholder="Contraseña">
+						<input type="email" name="email" placeholder="Correo" required>
+					</div>
+					<div class="data">
+						<input type="password" name="pass" placeholder="Contraseña" required>
 					</div>
 					<input class="i_button_c" type="submit" name="" value="Ingresar">
 					<a href="" title="" class="register">Inicar Sesion</a>

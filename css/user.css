@@ -1,0 +1,25 @@
+.ingreso{
+    line-height: 100px;
+    color: white;
+}
+
+span{
+    margin: 5px;
+}
+
+.icon-play3{
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+.info{
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    background: orange;
+}
+
+.info a{
+    line-height: normal;
+}
