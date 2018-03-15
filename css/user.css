@@ -1,6 +1,9 @@
-.ingreso{
+/* SECCION DE PERFIL */
+.perfil{
     line-height: 100px;
     color: white;
+    margin-left: 20%;
+    float: left;
 }
 
 span{
@@ -13,13 +16,28 @@ span{
 }
 
 .info{
+    width: 10%;
     line-height: normal;
     position: absolute;
-    text-align: center;
-    z-index: 10;
+    top: 30px;
+    text-align: left;
+    z-index: -10;
     background: orange;
+    padding: .3em;
+    transition: all 500ms;
+}
+
+.perfil:hover .info{
+    z-index: 10;
+    top: 100px;
 }
 
 .info a{
+    display: block;
+    width: 100%;
     line-height: normal;
+    margin-top: .3em;
+    color: white;
+    text-align: center;
+    font-size: .8em;
 }

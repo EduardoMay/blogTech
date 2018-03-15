@@ -16,10 +16,17 @@
             $error = '<li class=error>Por favor rellene todos los campos</li>';
         } else {
             $statement = $conexion->prepare('SELECT * FROM users WHERE nom_user = :nom_user LIMIT 1');
-            $statement->execute([':nom_user'=>$nombre]);
+            $statement->execute([':nom_user'=>$usuario]);
             $resultado = $statement->fetch();
             if ($resultado != false) {
                 $error .= '<li class=error>Este usuario ya existe</li>';
+            } else{
+                $statement = $conexion->prepare('SELECT * FROM perfiles WHERE cro_per = :correo LIMIT 1');
+                $statement->execute([':correo'=>$correo]);
+                $resultado = $statement->fetch();
+                if ($resultado != false) {
+                    $error .= '<li class=error>Este correo ya esta registrado</li>';
+                }
             }
         }
         if ($error == '') {
@@ -30,7 +37,7 @@
                 ':cro_per'=>$correo
             ]);
             if ($statement == true) {
-                $perfil = perfiles($nombre, $conexion);
+                $perfil = getPerfiles($correo, $conexion);
                 $id = $perfil['id_per'];
                 $statement = $conexion->prepare('INSERT INTO users (id_user, nom_user, pas_user, tipos_user, status, id_per) VALUES(null, :usuario, :password, :tipo, :status, :id)');
                 $statement->execute([
@@ -40,9 +47,12 @@
                     ':status'=>'activo',
                     ':id'=>$id
                 ]);
+                $estado = 'TE HAS REGISTRADO EXITOSAMENTE';
+                return require '../views/estado.view.php';;
             }else{
-                echo 'ERROR AL ENVIAR LOS DATOS';
+                $estado = 'ERROR 404';
+                return require '../views/estado.view.php';
             }
-            
         }
     }
+    require '../views/register.view.php';

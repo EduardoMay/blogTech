@@ -18,6 +18,7 @@ aside{
 
 article{
 	padding: 1em;
+	font-family: Arial, Helvetica, sans-serif;
 }
 /* TITULO DE LA NOTICIA */
 h1{
@@ -47,6 +48,7 @@ h1{
 
 section{
 	width: 80%;
+	text-align: justify;
 }
 
 img{
@@ -55,11 +57,4 @@ img{
 
 section, img{
 	float: left;
-}
-
-/* FOOTER */
-footer{
-	width: 100%;
-	padding: 10px;
-	box-sizing: border-box;
 }

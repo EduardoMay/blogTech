@@ -29,7 +29,7 @@ li{	list-style: none; }
 /* CENTRAR TEXTO */
 .center{ text-align: center;}
 
-/* BOTONES ETIQUETA a */
+/* BOTONES DE ETIQUETA a */
 /* A LA DERECHA */
 .i_button_r{
 	float: right;
@@ -67,6 +67,13 @@ li{	list-style: none; }
     color: white;
 }
 
+/* MENSAJE DE ERROR */
+.error{
+	text-align: center;
+	color: red;
+	font-family: var(--font-secundary);
+	font-weight: bold;
+}
 
 
 /* -------------------------------------------------------------------------------------------------- */
@@ -134,4 +141,18 @@ header{
 /* EFECTOS AL PASAR EL MOUSE */
 .subcat_a:hover{
 	color: var(--color-primary);
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------- */
+
+/* FOOTER */
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+	padding: 10px;
+	border-top: 3px solid var(--color-primary);
+	box-sizing: border-box;
+	font-family: var(--font-secundary);
 }
