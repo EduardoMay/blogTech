@@ -5,6 +5,7 @@ main{
     display: grid;
     width: 90%;
     margin: auto;
+    margin-bottom: 100px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1em;
 }

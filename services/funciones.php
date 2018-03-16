@@ -10,7 +10,7 @@
     }
 
     function iniciarSesion($table, $conexion) {
-        $statement = $conexion->prepare('SELECT * FROM $table WHERE usuario = :usuario');
+        $statement = $conexion->prepare("SELECT * FROM $table WHERE nom_user = :usuario");
         $statement->execute([
             ':usuario'=>$_SESSION['usuario']
         ]);
