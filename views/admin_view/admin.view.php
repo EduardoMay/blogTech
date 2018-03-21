@@ -41,7 +41,7 @@
 				<p> <span class="icon-smile"></span> <?php echo $admin['nom_user']; ?> <span class="icon-play3"></span></p>
 				<div class="info">
 					<p></p>
-					<a href="">Ver Perfil</a>
+					<a href="<?php echo RUTA.'php/perfil.php' ?>">Ver Perfil</a>
 					<a href="../php/cerrar.php">Cerrar Sesion</a>
 				</div>
 			</div>

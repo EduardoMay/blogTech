@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Inicio</title>
-		<link rel="stylesheet" href="../css/blog_styles.css">
-		<link rel="stylesheet" href="../css/index.css">
-		<link rel="shortcut icon" href="images/usuario.png" type="image/x-icon">
+		<link rel="stylesheet" href="../assets/blog_styles.css">
+		<link rel="stylesheet" href="../assets/index.css">
+		<link rel="shortcut icon" href="../assets/images/usuario.png" type="image/x-icon">
 	</head>
 	<body>
 		<!-- ENCABEZADO DE LA PAGINA -->

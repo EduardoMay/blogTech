@@ -45,10 +45,25 @@
         $statement->prepare("");
     }
 
-    function UpdatePerfil() {
+    function deletePerfil() {
     
     }
 
-    function DeletePerfil() {
-    
+    function updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $conexion) {
+        $statement = $conexion->prepare("UPDATE perfiles SET nom_per = :nombre, ape_per = :ape, cro_per = :email WHERE id_per = :id");
+        $statement->execute([
+            ':id'       =>  $id,
+            ':nombre'   =>  $newNombre,
+            ':ape'      =>  $newApe,
+            ':email'    =>  $newEmail
+        ]);
+        if (!empty($newUser)) {
+            $statement2 = $conexion->prepare("UPDATE users SET nom_user = :user WHERE id_per = :id");
+            $statement2->execute([
+                'id'    =>  $id,
+                ':user' =>  $newUser
+            ]);
+        }
+        $resulado = 'correcto';
+        return $resulado;
     }

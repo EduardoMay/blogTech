@@ -9,21 +9,48 @@
     if (!isset($_SESSION['usuario'])) {
         header ('Location: '.RUTA.'index.html');
     }
+    
+    if ($conexion == true) {
+        switch ($usuario['tipo_user']) {
+            case 1:
+                $perfil = getPerfil($usuario['id_per'], $conexion);
+                $nombre = $perfil['nom_per'];
+                $ape = $perfil['ape_per'];
+                $userN = $usuario['nom_user'];
+                $email = $perfil['cro_per'];
+                require '../views/login/perfil.view.php';
+                break;
+            case 2:
+                $perfil = getPerfil($usuario['id_per'], $conexion);
+                $nombre = $perfil['nom_per'];
+                $ape = $perfil['ape_per'];
+                $userN = $usuario['nom_user'];
+                $email = $perfil['cro_per'];
+                
+                
+                require '../views/login/perfil.view.php';
+                break;
+            case 3:
+                $perfil = getPerfil($usuario['id_per'], $conexion);
+                $nombre = $perfil['nom_per'];
+                $ape = $perfil['ape_per'];
+                $userN = $usuario['nom_user'];
+                $email = $perfil['cro_per'];
+                require '../views/login/perfil.view.php';
+                break;
+            default: header ('Location: '.RUTA.'services/validacion.php');
+        }    
+    } else {
+        echo 'ERROR AL CONECTAR A LA BASE DE DATOS';
+    }
 
-    if($usuario['tipo_user'] == 1) {
-        if ($conexion == true) {
-            // echo $usuario['id_per'];
-            $perfil = getPerfil($usuario['id_per'], $conexion);
-            
-            $nombre = $perfil['nom_per'];
-            $ape = $perfil['ape_per'];
-            $userN = $usuario['nom_user'];
-            $email = $perfil['cro_per'];
-        } else {
-            echo 'ERROR AL CONECTAR A LA BASE DE DATOS';
-        }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $usuario['id_per'];
+        $newNombre = $_POST['nombre'];
+        $newApe = $_POST['ape'];
+        $newUser = $_POST['user'];
+        $newEmail = $_POST['email'];
+        $resultado = updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $conexion);
         
-        require '../views/login/perfil.view.php';
-    } else{
-        header ('Location: '.RUTA.'services/validacion.php');
+        header('Location: '.RUTA.'php/perfil.php');
     }

@@ -27,27 +27,30 @@
         <div class="content-item">
             <p>Tus Datos</p>
         </div>
-        <div class="content-item">
-            <label for="">Nombre:</label><input type="text" value="<?php echo $nombre  ?>">
-        </div>
-        <div class="content-item">
-            <label for="">Apellidos:</label><input type="text" value="<?php echo $ape ?>">
-        </div>
-        <div class="content-item">
-            <label for="">Usuario:</label><input type="text" value="<?php  echo $userN ?>">
-        </div>
-        <div class="content-item">
-            <label for="">Correo:</label><input type="text" value="<?php   echo $email ?>">
-        </div>
-        <div class="content-item">
-            <p>Actualizar contraseña</p>
-        </div>
-        <div class="content-item">
-            <label for="">Nueva Contraseña:</label><input type="text" value="<?php   ?>">
-        </div>
-        <div class="content-item_button">
-            <input type="submit" value="Guardar" class=i_button_c>
-        </div>
+        <form action="<?php echo RUTA.'php/perfil.php' ?>" method="post">
+            <div class="content-item">
+                <label for="">Nombre:</label><input type="text" value="<?php echo $nombre  ?>" name="nombre">
+            </div>
+            <div class="content-item">
+                <label for="">Apellidos:</label><input type="text" value="<?php echo $ape ?>" name="ape">
+            </div>
+            <div class="content-item">
+                <p>Al cambiar tu usuario se cerrara tu sesion</p>
+                <label for="">Usuario:</label><input type="text" value="<?php  echo $userN ?>" name="user">
+            </div>
+            <div class="content-item">
+                <label for="">Correo:</label><input type="text" value="<?php   echo $email ?>" name="email">
+            </div>
+            <div class="content-item">
+                <p>Actualizar contraseña</p>
+            </div>
+            <div class="content-item">
+                <label for="">Nueva Contraseña:</label><input type="text" name="pass">
+            </div>
+            <div class="content-item_button">
+                <input type="submit" value="Guardar" class=i_button_c>
+            </div>
+        </form>
     </main>
     <div class="margin"></div>
 </body>

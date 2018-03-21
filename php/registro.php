@@ -1,7 +1,7 @@
 <?php
     // CREA UN ENLAZE CON LAS RUTAS DE CONFIG Y FUNCIONES
-    require '../config/config.php';
-    require '../funciones/funciones.php';
+    include '../services/config.php';
+    include '../services/funciones.php';
     // CREA LA CONEXION A LA BASE DE DATOS
     $conexion = conexion($bd_config);
     
@@ -50,11 +50,11 @@
                 // PREPARA LA SENTENCIA SQL PARA GUARDAR LOS DATOS A LA TABLA USUARIOS
                 $perfil = getPerfiles($correo, $conexion);
                 $id = $perfil['id_per'];
-                $statement = $conexion->prepare('INSERT INTO users (id_user, nom_user, pas_user, tipos_user, status, id_per) VALUES(null, :usuario, :password, :tipo, :status, :id)');
+                $statement = $conexion->prepare('INSERT INTO users (id_user, nom_user, pas_user, tipo_user, status, id_per) VALUES(null, :usuario, :password, :tipo, :status, :id)');
                 $statement->execute([
                     ':usuario'=>$usuario,
                     ':password'=>$password,
-                    ':tipo'=>'usuario normal',
+                    ':tipo'=>'1',
                     ':status'=>'activo',
                     ':id'=>$id
                 ]);
