@@ -15,7 +15,7 @@
 				<span class="p_title">Tecnología</span>
 				<span class="line"></span>
 			<br>
-				<span class="p_subtitle">Login</span>
+				<span class="p_subtitle">Registro</span>
 			</p>
 		</div>
 		<div class="der">
@@ -44,7 +44,7 @@
 						<?php endif; ?>
 					</div>
 					<input class="i_button_c" type="submit" name="" value="Registrarme">
-					<a href="../login.html" title="" class="register">Inicar Sesion</a>
+					<a href="./login.view.php" title="" class="register">Inicar Sesion</a>
 				</form>
 			</div>
 		</div>
