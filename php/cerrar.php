@@ -1,7 +1,7 @@
-<?php
+<?php session_start();
 
-require 'config/config.php';
-require 'funciones/funciones.php';
+include '../services/config.php';
+include '../services/funciones.php';
 
 session_destroy();
 

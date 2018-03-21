@@ -1,6 +1,6 @@
 <?php session_start();
-    require '../config/config.php';
-    require '../funciones/funciones.php';
+    include '../services/config.php';
+    include '../services/funciones.php';
 
     $error = '';
     $conexion = conexion($bd_config);
@@ -16,7 +16,7 @@
         $resultado = $statement->FETCH();
         if ($resultado !== false) {
             $_SESSION['usuario'] = $user;
-            header('Location: '.RUTA.'validacion.php');
+            header('Location: '.RUTA.'services/validacion.php');
         }else {
             $error = '<li class=error>Tu usuario y/o contraseña son incorrectos</li>';
         }

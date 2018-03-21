@@ -1,6 +1,6 @@
 <?php session_start();
-    require '../config/config.php';
-    require '../funciones/funciones.php';
+    require '../../services/config.php';
+    require '../../services/funciones.php';
 
     $conexion = conexion($bd_config);
 

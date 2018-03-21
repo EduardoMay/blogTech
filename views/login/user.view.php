@@ -4,11 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="stylesheet" href="../css/index.css">
-		<link rel="stylesheet" href="../css/blog_styles.css">
-		<link rel="stylesheet" href="../css/user.css">
-		<link rel="stylesheet" href="../css/fonts.css">
-		<link rel="shortcut icon" href="../images/usuario.png" type="image/x-icon">
+		<link rel="stylesheet" href="../assets/blog_styles.css">
+		<link rel="stylesheet" href="../assets/index.css">
+		<link rel="stylesheet" href="../assets/user.css">
+		<link rel="stylesheet" href="../assets/fonts.css">
+		<link rel="shortcut icon" href="../assets/images/usuario.png" type="image/x-icon">
 		<title>Inicio</title>
 	</head>
 	<body>
@@ -38,11 +38,11 @@
 				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
 			</menu>
 			<div class="perfil">
-				<p> <span class="icon-smile"></span> Perfil <span class="icon-play3"></span></p>
+				<p> <span class="icon-smile"></span> <?php echo $user['nom_user']; ?> <span class="icon-play3"></span></p>
 				<div class="info">
-					<p>Eduardo May</p>
-					<a href="">Ver Perfil</a>
-					<a href="../cerrar.php">Cerrar Sesion</a>
+					<p></p>
+					<a href="<?php echo RUTA.'php/perfil.php' ?>">Ver Perfil</a>
+					<a href="../php/cerrar.php">Cerrar Sesion</a>
 				</div>
 			</div>
 		</header>

@@ -5,9 +5,10 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Inicio</title>
-		<link rel="stylesheet" href="../css/admin.css">
-		<link rel="stylesheet" href="../css/blog_styles.css">
-		<link rel="shortcut icon" href="../images/usuario.png" type="image/x-icon">
+		<link rel="stylesheet" href="../assets/blog_styles.css">
+		<link rel="stylesheet" href="../assets/admin.css">
+		<link rel="stylesheet" href="../assets/fonts.css">
+		<link rel="shortcut icon" href="../assets/images/usuario.png" type="image/x-icon">
 	</head>
 	<body>
 		<!-- ENCABEZADO DE LA PAGINA -->
@@ -16,7 +17,8 @@
 				<a href="" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 			<menu type="context toolbar" class="menu">
-				<li class="cat_menu"><a href="../index.html" class="menu_a">Inicio</a>
+				<li class=cat_menu style="line-height: 100px; color: white;">ADMINISTRADOR</li>
+				<!--<li class="cat_menu"><a href="<?php echo RUTA.'index.html' ?>" class="menu_a">Inicio</a>
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
 					<ul class="subcat_menu">
@@ -33,11 +35,15 @@
 						<li><a href="" class="subcat_a">Camaras</a></li>
 					</ul>
 				</li>
-				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
+				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li> -->
 			</menu>
-				<div class="ingreso">
-				<a href="login.html" title="Ingresar">Ingresar</a>
-				<a href="register.html" title="Registrate">Registrate</a>
+			<div class="perfil">
+				<p> <span class="icon-smile"></span> <?php echo $admin['nom_user']; ?> <span class="icon-play3"></span></p>
+				<div class="info">
+					<p></p>
+					<a href="">Ver Perfil</a>
+					<a href="../php/cerrar.php">Cerrar Sesion</a>
+				</div>
 			</div>
 		</header>
 		<!-- RESETEAR FLOAT -->
@@ -47,15 +53,15 @@
 		<!-- SELECCION -->
 		<main class="grid">
 			<div class="grid_1">
-				<img src="../images/archivo-nuevo.svg" alt="">
-				<a href="./new.html">Nueva Publicacion</a>
+				<img src="../assets/images/archivo-nuevo.svg" alt="">
+				<a href="<?php echo RUTA.'php/newPost.php'; ?>">Nueva Publicacion</a>
 			</div>
 			<div class="grid_2">
-				<img src="../images/usuario.svg" alt="">
-				<a href="./viewUsers.php">Usuarios</a>
+				<img src="../assets/images/usuario.svg" alt="">
+				<a href="<?php echo RUTA.'views/admin_view/viewUsers.view.php'; ?>">Usuarios</a>
 			</div>
 			<div class="grid_3">
-				<img src="../images/nota.svg" alt="">
+				<img src="../assets/images/nota.svg" alt="">
 				<a href="">Posts</a>
 			</div>
 		</main>

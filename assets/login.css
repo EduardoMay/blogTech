@@ -73,6 +73,10 @@ label{
   box-sizing: border-box;
 }
 
+.data input:focus{
+  background: white;
+}
+
 .register{
   display: block;
   text-align: center;

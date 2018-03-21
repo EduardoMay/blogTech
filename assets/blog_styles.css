@@ -143,6 +143,50 @@ header{
 	color: var(--color-primary);
 }
 
+/* ESTILOS PARA EL PERFIL */
+.perfil{
+    line-height: 100px;
+    color: white;
+    margin-left: 20%;
+    float: left;
+}
+
+span{
+    margin: 5px;
+}
+
+.icon-play3{
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
+.info{
+    width: 10%;
+    line-height: normal;
+    position: absolute;
+    top: 30px;
+    text-align: left;
+    z-index: -10;
+    background: orange;
+    padding: .3em;
+    transition: all 500ms;
+}
+
+.perfil:hover .info{
+    z-index: 10;
+    top: 100px;
+}
+
+.info a{
+    display: block;
+    width: 100%;
+    line-height: normal;
+    margin-top: .3em;
+    color: white;
+    text-align: center;
+    font-size: .8em;
+}
+
 
 /* ----------------------------------------------------------------------------------------------------------- */
 
@@ -155,4 +199,37 @@ footer{
 	border-top: 3px solid var(--color-primary);
 	box-sizing: border-box;
 	font-family: var(--font-secundary);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- */
+
+/* PERFIL.VIEW.PHP */
+.content-main{
+    margin: auto;
+    width: 85%;
+    padding: 1em;
+    border: 2px solid var(--color-primary);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content-item{
+    margin-top: 1em;
+}
+
+.content-item p{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.content-item label{
+    display: inline-block;
+    width: 100px;
+}
+
+.content-item input{
+    width: 30%;
+}
+
+.content-item label, .content-item input {
+    padding: 1em;
 }
