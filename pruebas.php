@@ -1,9 +1,9 @@
 <title>Pruebas</title>
 <?php
 
-    // require 'config/config.php';
-    // require 'funciones/funciones.php';
-    // $conexion = conexion($bd_config);
+    require 'services/config.php';
+    require 'services/funciones.php';
+    $conexion = conexion($bd_config);
 
     // CONSULTAR PERFILES
     // $correo = 'lalo@gmail.com';
@@ -19,3 +19,11 @@
     //     echo $key['nom_per'].' '.$key['nom_user'].'<br>';
     // }
 
+$statement = $conexion->prepare("SELECT * FROM secciones");
+$statement->execute();
+$resultado = $statement;
+
+foreach ($resultado as $valor ) {
+    # code...
+    echo utf8_decode($valor['info_sec']).'<br><br>';
+}

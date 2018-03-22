@@ -8,11 +8,6 @@
     $statement->execute();
     $resultado = $statement->fetchall();
 
-    foreach ($resultado as $key ) {
-        # code...
-        // echo $key['id_user'].$key['nom_user'].'<br>';
-    }
-
 ?>
 
 <!DOCTYPE html>

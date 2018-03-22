@@ -233,3 +233,37 @@ footer{
 .content-item label, .content-item input {
     padding: 1em;
 }
+
+/* ------------------------------------------------------------------------------------------------------------- */
+
+/* NEW.VIEW.PHP */
+
+table{
+    width: 80%;
+    margin: auto;
+    border: 3px solid var(--color-primary);
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table a{
+    color: var(--color-primary);
+}
+
+caption{
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: .5em;
+}
+
+table input{
+    width: 100%;
+}
+
+textarea{
+    width: 100%;
+}
+
+td{
+    padding: 1em;
+}

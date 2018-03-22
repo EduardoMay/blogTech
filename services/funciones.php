@@ -31,8 +31,20 @@
         return $statement->FETCH(PDO::FETCH_ASSOC);
     }
 
+    function getCategorias($table, $conexion) {
+        $statement = $conexion->prepare("SELECT * FROM $table");
+        $statement->execute();
+        return $statement;
+    }
+
+    function getSecciones($table, $conexion) {
+        $statement = $conexion->prepare("SELECT * FROM $table");
+        $statement->execute();
+        return $statement;
+    }
+
     function setPerfil($nom, $ape, $email, $conexion) {
-        $statement->prepare("SELECT * FROM perfiles (nom_per, ape_per, cro_per) VALUES (:nombre, :apellido, :email)");
+        $statement = $conexion->prepare("SELECT * FROM perfiles (nom_per, ape_per, cro_per) VALUES (:nombre, :apellido, :email)");
         $statement->execute([
             ':nombre'=>$nom,
             ':apellido'=>$ape,
@@ -41,8 +53,17 @@
         return $statement->FETCH();
     }
 
-    function setUser($user, $password) {
-        $statement->prepare("");
+    function setSeccion($idCat, $idPer, $title, $info, $fch, $stsC, $conexion) {
+        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, info_sec, fch_sec, statusC) VALUES(:idcat, :idper, :title, :info, :fch, :statusc)");
+        $statement->execute([
+            ':idcat' => $idCat,
+            ':idper' => $idPer,
+            ':title' => $title,
+            ':info' => $info,
+            ':fch' => $fch,
+            ':statusc' => $stsC
+        ]);
+        return $statement;
     }
 
     function deletePerfil() {

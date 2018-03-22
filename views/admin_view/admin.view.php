@@ -18,24 +18,6 @@
 			</div>
 			<menu type="context toolbar" class="menu">
 				<li class=cat_menu style="line-height: 100px; color: white;">ADMINISTRADOR</li>
-				<!--<li class="cat_menu"><a href="<?php echo RUTA.'index.html' ?>" class="menu_a">Inicio</a>
-				</li>
-				<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
-					<ul class="subcat_menu">
-						<li><a href="" class="subcat_a">Moviles</a></li>
-						<li><a href="" class="subcat_a">Apps y Software</a></li>
-						<li><a href="" class="subcat_a">Juegos</a></li>
-						<li><a href="" class="subcat_a">Motor</a></li>
-						<li><a href="" class="subcat_a">Portatiles</a></li>
-						<li><a href="" class="subcat_a">Computadoras</a></li>
-						<li><a href="" class="subcat_a">Televisores</a></li>
-						<li><a href="" class="subcat_a">Gadgets</a></li>
-						<li><a href="" class="subcat_a">Realidad Virtual</a></li>
-						<li><a href="" class="subcat_a">Audio</a></li>
-						<li><a href="" class="subcat_a">Camaras</a></li>
-					</ul>
-				</li>
-				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li> -->
 			</menu>
 			<div class="perfil">
 				<p> <span class="icon-smile"></span> <?php echo $admin['nom_user']; ?> <span class="icon-play3"></span></p>
@@ -62,7 +44,7 @@
 			</div>
 			<div class="grid_3">
 				<img src="../assets/images/nota.svg" alt="">
-				<a href="">Posts</a>
+				<a href="<?php echo RUTA.'controllers/usuario.php' ?>">Posts</a>
 			</div>
 		</main>
 		<!-- PIE DE PAGINA -->
