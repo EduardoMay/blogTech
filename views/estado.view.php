@@ -13,7 +13,7 @@
 		<!-- ENCABEZADO DE LA PAGINA -->
 		<header id="header" class="">
 			<div class="title">
-				<a href="" title="Inicio" class="title_a">Blog de Tecnologia</a>
+				<a href="<?php echo RUTA.'index.php' ?>" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 		</header>
 		<!-- RESETEAR FLOAT -->

@@ -164,7 +164,7 @@ span{
     width: 10%;
     line-height: normal;
     position: absolute;
-    top: 30px;
+    top: 20px;
     text-align: left;
     z-index: -10;
     background: orange;
@@ -177,14 +177,24 @@ span{
     top: 100px;
 }
 
+.perfil .info a:hover{
+    border-bottom: 1px solid white;
+}
+
 .info a{
     display: block;
     width: 100%;
     line-height: normal;
-    margin-top: .3em;
+    margin-top: .8em;
     color: white;
     text-align: center;
     font-size: .8em;
+    box-sizing: border-box;
+    transition: all 500ms;
+}
+
+.info a:nth-child(2){
+    margin-bottom: .8em;
 }
 
 

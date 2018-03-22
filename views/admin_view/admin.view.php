@@ -14,7 +14,7 @@
 		<!-- ENCABEZADO DE LA PAGINA -->
 		<header id="header" class="">
 			<div class="title">
-				<a href="" title="Inicio" class="title_a">Blog de Tecnologia</a>
+				<a href="<?php echo RUTA.'index.php' ?>" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 			<menu type="context toolbar" class="menu">
 				<li class=cat_menu style="line-height: 100px; color: white;">ADMINISTRADOR</li>

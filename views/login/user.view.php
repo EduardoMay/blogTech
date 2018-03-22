@@ -6,7 +6,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="../assets/blog_styles.css">
 		<link rel="stylesheet" href="../assets/index.css">
-		<link rel="stylesheet" href="../assets/user.css">
 		<link rel="stylesheet" href="../assets/fonts.css">
 		<link rel="shortcut icon" href="../assets/images/usuario.png" type="image/x-icon">
 		<title>Inicio</title>
@@ -15,7 +14,7 @@
 		<!-- ENCABEZADO DE LA PAGINA -->
 		<header id="header" class="">
 			<div class="title">
-				<a href="" title="Inicio" class="title_a">Blog de Tecnologia</a>
+				<a href="<?php echo RUTA.'index.php' ?>" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 			<menu type="context toolbar" class="menu">
 				<li class="cat_menu"><a href="" class="menu_a">Inicio</a>
@@ -40,7 +39,6 @@
 			<div class="perfil">
 				<p> <span class="icon-smile"></span> <?php echo $user['nom_user']; ?> <span class="icon-play3"></span></p>
 				<div class="info">
-					<p></p>
 					<a href="<?php echo RUTA.'php/perfil.php' ?>">Ver Perfil</a>
 					<a href="../php/cerrar.php">Cerrar Sesion</a>
 				</div>

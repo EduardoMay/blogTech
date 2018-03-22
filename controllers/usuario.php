@@ -13,10 +13,10 @@
     $user = iniciarSesion('users', $conexion);
 
     $resultado = getSecciones("secciones", $conexion);
-	foreach ($resultado as $valor ) {
-		# code...
-		echo $valor['id_sec'];
-	}
+	// foreach ($resultado as $valor ) {
+	// 	# code...
+	// 	echo $valor['id_sec'];
+	// }
 
     if($user['tipo_user'] == 1) {
         include '../views/login/user.view.php';

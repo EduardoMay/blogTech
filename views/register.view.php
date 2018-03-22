@@ -44,7 +44,7 @@
 						<?php endif; ?>
 					</div>
 					<input class="i_button_c" type="submit" name="" value="Registrarme">
-					<a href="./login.view.php" title="" class="register">Inicar Sesion</a>
+					<a href="<?php echo RUTA.'php/login.php' ?>" title="" class="register">Inicar Sesion</a>
 				</form>
 			</div>
 		</div>

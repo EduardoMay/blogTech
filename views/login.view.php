@@ -35,7 +35,7 @@
 						<?php endif; ?>
 					</div>
 					<input class="i_button_c" type="submit" name="" value="Ingresar">
-					<a href="register.view.php" title="" class="register">Registrate</a>
+					<a href="<?php echo RUTA.'php/registro.php' ?>" title="" class="register">Registrate</a>
 				</form>
 			</div>
 		</div>
