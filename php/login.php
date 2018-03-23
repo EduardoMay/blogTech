@@ -16,7 +16,7 @@
         $resultado = $statement->FETCH();
         if ($resultado !== false) {
             $_SESSION['usuario'] = $user;
-            header('Location: '.RUTA.'services/validacion.php');
+            header('Location: '.RUTA.'index.php');
         }else {
             $error = '<li class=error>Tu usuario y/o contraseña son incorrectos</li>';
         }

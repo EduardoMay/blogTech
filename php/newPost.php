@@ -3,7 +3,7 @@
     include '../services/funciones.php';
 
     if(!isset($_SESSION['usuario'])) {
-        header('Location: '.RUTA.'index.html');
+        header('Location: '.RUTA.'index.php');
     }
 
     $conexion = conexion($bd_config);
@@ -29,6 +29,6 @@
         
         include '../views/admin_view/new.view.php';
     } else {
-        header ('Location: '.RUTA.'services/validacion.php');
+        header ('Location: '.RUTA.'index.php');
     }
     

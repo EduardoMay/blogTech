@@ -7,7 +7,7 @@
     $usuario = iniciarSesion('users', $conexion);
 
     if (!isset($_SESSION['usuario'])) {
-        header ('Location: '.RUTA.'index.html');
+        header ('Location: '.RUTA.'index.php');
     }
     
     if ($conexion == true) {
@@ -38,7 +38,7 @@
                 $email = $perfil['cro_per'];
                 require '../views/login/perfil.view.php';
                 break;
-            default: header ('Location: '.RUTA.'services/validacion.php');
+            default: header ('Location: '.RUTA.'index.php');
         }    
     } else {
         echo 'ERROR AL CONECTAR A LA BASE DE DATOS';

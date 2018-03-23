@@ -7,6 +7,7 @@
 		<title>Inicio</title>
 		<link rel="stylesheet" href="assets/blog_styles.css">
 		<link rel="stylesheet" href="assets/index.css">
+		<link rel="stylesheet" href="./assets/fonts.css">
 		<link rel="shortcut icon" href="assets/images/usuario.png" type="image/x-icon">
 	</head>
 	<body>
@@ -35,10 +36,11 @@
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
 			</menu>
-				<div class="ingreso">
-				<a href="./php/login.php" title="Ingresar">Ingresar</a>
-				<a href="php/registro.php" title="Registrate">Registrate</a>
-			</div>
+			<?php 
+				if (!empty($infoP)) {
+					echo $infoP;
+				}
+			?>
 		</header>
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div> 

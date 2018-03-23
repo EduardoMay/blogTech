@@ -5,4 +5,4 @@ include '../services/funciones.php';
 
 session_destroy();
 
-header('Location: '.RUTA.'index.html');
+header('Location: '.RUTA.'index.php');
