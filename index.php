@@ -1,45 +1,54 @@
 <?php session_start();
-    include './services/config.php';
-    include './services/funciones.php';
+	include './services/config.php';
+	include './services/funciones.php';
 
-    $infoP = '';
+	$conexion = conexion($bd_config);
 
-    if(!isset($_SESSION['usuario'])) {
-        $infoP = "  
-        <div class=ingreso>
-            <a href='./php/login.php' title='Ingresar'>Ingresar</a>
-            <a href='php/registro.php' title='Registrate'>Registrate</a>
-        </div>
-        ";
-        include './inicio.php';
-    }
+	$noticia = $conexion->prepare("SELECT * FROM secciones");
+	$noticia->execute();
+	$resultado = $noticia;
 
-    $conexion = conexion($bd_config);
-    $user = iniciarSesion('users', $conexion);
-    $nom = getPerfil($user['id_per'], $conexion);
-    
+	function nomP($id_per, $conexion) {
+		$s_per = $conexion->prepare("SELECT nom_per FROM perfiles WHERE id_per = :id_per");
+		$s_per->execute([':id_per' => $id_per]);
+		return $id_per = $s_per->fetch();
+	}
+	
+	function idCat($id_cat, $conexion) {
+		$s_cat = $conexion->prepare("SELECT nom_cat FROM categorias WHERE id_cat = :id_cat");
+		$s_cat->execute([':id_cat' => $id_cat]);
+		return $id_cat = $s_cat->fetch();
+	}
 
-    if ($user['tipo_user'] == 1) {
-        $infoP = "
-        <div class=perfil>
-            <p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
-		    <div class=info>
-		    	<a href=./php/perfil.php>Ver Perfil</a>
-		    	<a href=./php/cerrar.php>Cerrar Sesion</a>
+	$per = '';
+	$infoP = '';
+
+	if(!isset($_SESSION['usuario'])) {
+		$infoP = "  
+		<div class=ingreso>
+			<a href='./php/login.php' title='Ingresar'>Ingresar</a>
+			<a href='php/registro.php' title='Registrate'>Registrate</a>
 		</div>
-        ";
+		";
+		include './inicio.php';
+	}else{
+		$user = iniciarSesion('users', $conexion);
+		// OBTENER NOMBRE DE PERFIL
+		$nom = getPerfil($user['id_per'], $conexion);
 
-        include './inicio.php';
-    } elseif ($user['tipo_user'] == 2) {
-        $infoP = "
-        <div class=perfil>
-            <p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
-		    <div class=info>
-		    	<a href=./php/perfil.php>Ver Perfil</a>
-		    	<a href=./php/cerrar.php>Cerrar Sesion</a>
+		$infoP = "
+		<div class=perfil>
+			<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+			<div class=info>
+				<a href=./php/perfil.php>Ver Perfil</a>
+				<a href=./php/cerrar.php>Cerrar Sesion</a>
 		</div>
-        ";
-        include './views/admin_view/admin.view.php';
-    } else{
-        include './inicio.php';
-    }
+		";
+
+		if ($user['tipo_user'] == 1) {
+			include './inicio.php';
+		} elseif ($user['tipo_user'] == 2) {
+			include './views/admin_view/admin.view.php';
+		} else{
+		}
+	}

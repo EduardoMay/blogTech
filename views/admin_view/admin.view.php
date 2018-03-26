@@ -43,7 +43,7 @@
 			</div>
 			<div class="grid_3">
 				<img src="./assets/images/nota.svg" alt="">
-				<a href="<?php echo RUTA.'index.php' ?>">Posts</a>
+				<a href="<?php echo RUTA.'inicio.php' ?>">Posts</a>
 			</div>
 		</main>
 		<!-- PIE DE PAGINA -->

@@ -20,7 +20,7 @@
 				<li class=cat_menu style="line-height: 100px; color: white;">ADMINISTRADOR</li>
 			</menu>
 			<div class="perfil">
-				<p> <span class="icon-smile"></span> <?php echo $admin['nom_user']; ?> <span class="icon-play3"></span></p>
+				<p> <span class="icon-smile"></span> <?php echo ucwords($nom['nom_per']); ?> <span class="icon-play3"></span></p>
 				<div class="info">
 					<p></p>
 					<a href="<?php echo RUTA.'php/perfil.php' ?>">Ver Perfil</a>
@@ -64,6 +64,12 @@
 							<td>Titulo:</td>
 							<td>
 								<input type="text" name="title">
+							</td>
+						</tr>
+						<tr>
+							<td>Descripcion:</td>
+							<td>
+								<textarea name="des" id="" cols="30" rows="10"></textarea>
 							</td>
 						</tr>
 						<tr>

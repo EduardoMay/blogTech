@@ -53,12 +53,13 @@
         return $statement->FETCH();
     }
 
-    function setSeccion($idCat, $idPer, $title, $info, $fch, $stsC, $conexion) {
-        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, info_sec, fch_sec, statusC) VALUES(:idcat, :idper, :title, :info, :fch, :statusc)");
+    function setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $conexion) {
+        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, infore_sec, info_sec, fch_sec, statusC) VALUES(:idcat, :idper, :title, :infodes, :info, :fch, :statusc)");
         $statement->execute([
             ':idcat' => $idCat,
             ':idper' => $idPer,
             ':title' => $title,
+            ':infodes' => $des,
             ':info' => $info,
             ':fch' => $fch,
             ':statusc' => $stsC

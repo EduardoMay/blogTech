@@ -46,33 +46,23 @@
 		<div class="clear"></div> 
 		<div class="grid">
 			<main>
-				<article>
-					<h1 class="title_p">LG en un niivel bajo?</h1>
-					<p class="cat">Moviles</p><p class="sub_cat">LG</p><p class="date">01/02/2018</p><p class="autor">Lalo_Oficial</p>
-					<section>
-					<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quisquam nostrum iure rerum, mollitia eaque voluptas, quibusdam provident molestias officia commodi enim eius modi repellendus consequuntur temporibus, magnam pariatur minus?
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quisquam nostrum iure rerum, mollitia eaque voluptas, quibusdam provident molestias officia commodi enim eius modi repellendus consequuntur temporibus, magnam pariatur minus?
-						</p>
-					</section>
-					<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">
-					<div class="clear"></div>
-					<a href="publicacion.html" title="Ver mas" class="i_button_r">Ver mas</a>
-					<div class="clear"></div>
-				</article>
-				<article>
-					<h1 class="title_p">LG en un niivel bajo?</h1>
-					<p class="cat">Moviles</p><p class="sub_cat">LG</p><p class="date">01/02/2018</p><p class="autor">Lalo_Oficial</p>
-					<section>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quisquam nostrum iure rerum, mollitia eaque voluptas, quibusdam provident molestias officia commodi enim eius modi repellendus consequuntur temporibus, magnam pariatur minus?
-						</p>
-					</section>
-					<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">
-					<div class="clear"></div>
-					<a href="" title="Ver mas" class="i_button_r">Ver mas</a>
-					<div class="clear"></div>
-				</article>
+				<?php
+					foreach ($resultado as $info ) {
+						$per = nomP($info['id_per'], $conexion);
+						$cat = idCat($info['id_cat'], $conexion);
+						echo '<article>';
+						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
+						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">'.ucwords($per['nom_per']).'</p>';
+						echo '<section>';
+						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
+						echo '</section>';
+						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
+						echo '<div class="clear"></div>';
+						echo '<a href="publicacion.html" title="Ver mas" class="i_button_r">Ver mas</a>';
+						echo '<div class="clear"></div>';
+						echo '</article>';
+					}
+				?>
 			</main>
 			<!-- LO MAS RECIENTE DE LAS NOTICIAS, PARTE DE LA DERECHA -->
 			<aside>

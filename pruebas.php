@@ -19,11 +19,40 @@
     //     echo $key['nom_per'].' '.$key['nom_user'].'<br>';
     // }
 
-$statement = $conexion->prepare("SELECT * FROM secciones");
-$statement->execute();
-$resultado = $statement;
+$noticia = $conexion->prepare("SELECT * FROM secciones");
+$noticia->execute();
+$resultado = $noticia;
 
-foreach ($resultado as $valor ) {
-    # code...
-    echo utf8_decode($valor['info_sec']).'<br><br>';
+function sec($conexion) {
+    $noticia = $conexion->prepare("SELECT * FROM secciones");
+    $noticia->execute();
+    return $resultado = $noticia->FETCH(PDO::FETCH_ASSOC);
+    
 }
+
+function nomP($id_per, $conexion) {
+
+    $s_per = $conexion->prepare("SELECT nom_per FROM perfiles WHERE id_per = :id_per");
+    $s_per->execute([':id_per' => $id_per]);
+    return $id_per = $s_per->fetch();
+}
+
+function idCat($id_cat, $conexion) {
+    $s_cat = $conexion->prepare("SELECT nom_cat FROM categorias WHERE id_cat = :id_cat");
+    $s_cat->execute([':id_cat' => $id_cat]);
+    return $id_cat = $s_cat->fetch();
+}
+// echo $resultado['title_sec'];
+
+foreach ($resultado as $info ) {
+    # code...
+    echo utf8_decode($info['id_cat']).' categoria<br>';
+    $res = sec($conexion);
+    $per = nomP($info['id_per'], $conexion);
+    $cat = idCat($info['id_cat'], $conexion);
+    echo $res['id_sec'].' Seccion<br>';
+    echo $per['nom_per'].' perfil<br>';
+    echo $cat['nom_cat'].' categoria<br><br>';
+
+}
+
