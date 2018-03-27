@@ -15,6 +15,9 @@
 			<div class="title">
 				<a href="<?php echo RUTA.'index.php' ?>" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
+			<div class=ingreso>
+				<a href='../php/login.php' title='Ingresar'>Ingresar</a>
+			</div>
 		</header>
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div> 

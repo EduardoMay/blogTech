@@ -50,7 +50,8 @@
         $newApe = $_POST['ape'];
         $newUser = $_POST['user'];
         $newEmail = $_POST['email'];
-        $resultado = updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $conexion);
+        $newPass = $_POST['pass'];
+        $resultado = updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $newPass, $conexion);
         
         header('Location: '.RUTA.'php/perfil.php');
     }

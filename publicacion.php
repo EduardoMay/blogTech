@@ -28,10 +28,10 @@
 		<!-- ENCABEZADO DE LA PAGINA -->
 		<header id="header" class="">
 			<div class="title">
-				<a href="" title="Inicio" class="title_a">Blog de Tecnologia</a>
+				<a href="./index.php" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 			<menu type="context toolbar" class="menu">
-				<li class="cat_menu"><a href="" class="menu_a">Inicio</a>
+				<li class="cat_menu"><a href="./index.php" class="menu_a">Inicio</a>
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
 					<ul class="subcat_menu">

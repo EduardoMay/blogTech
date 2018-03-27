@@ -71,7 +71,7 @@
     
     }
 
-    function updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $conexion) {
+    function updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $newPass, $conexion) {
         $statement = $conexion->prepare("UPDATE perfiles SET nom_per = :nombre, ape_per = :ape, cro_per = :email WHERE id_per = :id");
         $statement->execute([
             ':id'       =>  $id,
@@ -80,10 +80,11 @@
             ':email'    =>  $newEmail
         ]);
         if (!empty($newUser)) {
-            $statement2 = $conexion->prepare("UPDATE users SET nom_user = :user WHERE id_per = :id");
+            $statement2 = $conexion->prepare("UPDATE users SET nom_user = :user, pas_user = :pass WHERE id_per = :id");
             $statement2->execute([
                 'id'    =>  $id,
-                ':user' =>  $newUser
+                ':user' =>  $newUser,
+                ':pass' =>  $newPass
             ]);
         }
         $resulado = 'correcto';
