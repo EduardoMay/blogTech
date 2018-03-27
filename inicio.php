@@ -14,7 +14,7 @@
 		<!-- ENCABEZADO DE LA PAGINA -->
 		<header id="header" class="">
 			<div class="title">
-				<a href="" title="Inicio" class="title_a">Blog de Tecnologia</a>
+				<a href="./index.php" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 			<menu type="context toolbar" class="menu">
 				<li class="cat_menu"><a href="" class="menu_a">Inicio</a>
@@ -58,7 +58,7 @@
 						echo '</section>';
 						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
 						echo '<div class="clear"></div>';
-						echo '<a href="publicacion.html" title="Ver mas" class="i_button_r">Ver mas</a>';
+						echo '<a href=publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
 						echo '<div class="clear"></div>';
 						echo '</article>';
 					}
@@ -66,24 +66,28 @@
 			</main>
 			<!-- LO MAS RECIENTE DE LAS NOTICIAS, PARTE DE LA DERECHA -->
 			<aside>
-				<article>
-					<h1 class="title_as">lorem ipsum</h1>
-					<section>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sint sunt illo eaque voluptatum nemo repudiandae sequi laudantium, minus iste voluptatibus consequatur similique. Deserunt, eius laudantium perferendis dolore soluta aliquam!
-						</p>
-					</section>
-					<a href="" title="Ver mas" class="i_button_r">Ver mas</a>
-				</article>
-				<article>
-					<h1 class="title_as">lorem ipsum</h1>
-					<section>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sint sunt illo eaque voluptatum nemo repudiandae sequi laudantium, minus iste voluptatibus consequatur similique. Deserunt, eius laudantium perferendis dolore soluta aliquam!
-						</p>
-					</section>
-					<a href="" title="Ver mas" class="i_button_r">Ver mas</a>
-				</article>
+				<?php
+					$noticia = $conexion->prepare("SELECT * FROM secciones");
+					$noticia->execute();
+					$resultado = $noticia;
+
+					foreach ($resultado as $info ) {
+						if ($info['ten_sec'] == 1) {
+							$per = nomP($info['id_per'], $conexion);
+							$cat = idCat($info['id_cat'], $conexion);
+							echo '<article>';
+							echo '<h1 class=title_as>'.utf8_decode($info['title_sec']).'</h1>';
+							echo '<section>';
+							echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
+							echo '</section>';
+							echo '<div class="clear"></div>';
+							echo '<a href=publicacion.php?var1='.$info['id_sec'].' title="Ver mas" class="i_button_r">Ver mas</a>';
+							echo '<div class="clear"></div>';
+							echo '</article>';
+						
+						}
+					}
+				?>
 			</aside>
 		</div>
 		<!-- PIE DE PAGINA -->

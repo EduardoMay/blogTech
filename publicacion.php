@@ -1,3 +1,18 @@
+<?php session_start();
+	require './services/config.php';
+	require './services/funciones.php';
+	$conexion = conexion($bd_config);
+	$idSec = $_GET['var1'];
+	$statement = $conexion->prepare("SELECT * FROM secciones WHERE id_sec = :id_sec LIMIT 1");
+	$statement->execute([
+		':id_sec'=>$idSec
+	]);
+	$resultado = $statement->fetch();
+	$cat = idcat($resultado['id_cat'], $conexion);
+	$per = nomP($resultado['id_per'], $conexion);
+	// echo $resultado['id_cat'];
+	// echo $cat['nom_cat'];
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,10 +50,10 @@
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
 			</menu>
-				<div class="ingreso">
+				<!-- <div class="ingreso">
 				<a href="./php/login.php" title="Ingresar">Ingresar</a>
 				<a href="./php/registro.php" title="Registrate">Registrate</a>
-			</div>
+			</div> -->
 		</header>
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div>
@@ -48,21 +63,13 @@
 		</div>
 		<div class="content-noticia">
 			<div class="item-header">
-				<p class="item-titulo">Titulo de la Noticia</p>
-				<p class="cat">Moviles</p><p class="date">01/02/2018</p><p class="autor">Lalo_Oficial</p>
+				<?php echo '<p class="item-titulo">'.$resultado['title_sec'].'</p>' ?>
+				<?php echo '<p class="cat">'.$cat['nom_cat'].'</p><p class="date">'.$resultado['fch_sec'].'</p><p class="autor">'.ucwords($per['nom_per']).'</p>' ?>
 			</div>
 			<div class="clear"></div>
 			<div class="item-noticia">
 				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non iure debitis, distinctio optio voluptatibus eum quam reprehenderit consequatur minima et illo earum sint. Recusandae quaerat totam, officia earum temporibus consequuntur?
+					<?php echo utf8_decode($resultado['info_sec']) ?>
 				</p>
 			</div>
 			<div class="item-img">

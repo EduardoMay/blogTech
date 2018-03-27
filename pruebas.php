@@ -26,7 +26,7 @@ $resultado = $noticia;
 function sec($conexion) {
     $noticia = $conexion->prepare("SELECT * FROM secciones");
     $noticia->execute();
-    return $resultado = $noticia->FETCH(PDO::FETCH_ASSOC);
+    return $resultado = $noticia->fetch();
     
 }
 
@@ -46,13 +46,38 @@ function idCat($id_cat, $conexion) {
 
 foreach ($resultado as $info ) {
     # code...
-    echo utf8_decode($info['id_cat']).' categoria<br>';
-    $res = sec($conexion);
-    $per = nomP($info['id_per'], $conexion);
-    $cat = idCat($info['id_cat'], $conexion);
-    echo $res['id_sec'].' Seccion<br>';
-    echo $per['nom_per'].' perfil<br>';
-    echo $cat['nom_cat'].' categoria<br><br>';
-
+    if ($info['ten_sec'] == 1) {
+        echo utf8_decode($info['id_cat']).' categoria<br>';
+        $res = sec($conexion);
+        $per = nomP($info['id_per'], $conexion);
+        $cat = idCat($info['id_cat'], $conexion);
+        echo $info['id_sec'].' Seccion<br>';
+        echo $per['nom_per'].' perfil<br>';
+        echo $cat['nom_cat'].' categoria<br><br>';
+    
+    }
 }
 
+// $noticia = $conexion->prepare("SELECT * FROM secciones");
+// $noticia->execute();
+// $resultado = $noticia;
+
+
+// reset($resultado);
+
+// echo '<br>Hola<br>';
+
+// foreach ($resultado as $info ) {
+//     # code...
+//     if ($info['id_cat'] == 7) {
+//         echo 'hola';
+//     }
+//     echo utf8_decode($info['id_cat']).' categoria<br>';
+//     $res = sec($conexion);
+//     $per = nomP($info['id_per'], $conexion);
+//     $cat = idCat($info['id_cat'], $conexion);
+//     echo $res['id_sec'].' Seccion<br>';
+//     echo $per['nom_per'].' perfil<br>';
+//     echo $cat['nom_cat'].' categoria<br><br>';
+//     reset($resultado);
+// }

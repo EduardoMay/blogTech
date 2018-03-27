@@ -89,3 +89,15 @@
         $resulado = 'correcto';
         return $resulado;
     }
+
+    function nomP($id_per, $conexion) {
+		$s_per = $conexion->prepare("SELECT nom_per FROM perfiles WHERE id_per = :id_per");
+		$s_per->execute([':id_per' => $id_per]);
+		return $id_per = $s_per->fetch();
+    }
+    
+    function idCat($id_cat, $conexion) {
+		$s_cat = $conexion->prepare("SELECT nom_cat FROM categorias WHERE id_cat = :id_cat");
+		$s_cat->execute([':id_cat' => $id_cat]);
+		return $id_cat = $s_cat->fetch();
+	}

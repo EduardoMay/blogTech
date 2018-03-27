@@ -34,9 +34,22 @@
     font-family: arial;
 }
 
-.cat, .date, .autor{
-    float: left;
+.cat, .sub_cat, .date, .autor{
+	display: inline-block;
+	margin: 2px;
+	padding: 5px;
+	font-family: var(--font-secundary);
+	font-size: 12px;
 }
+
+.cat, .sub_cat{
+	color: white;
+}
+
+.cat{
+	background: #F5590B;
+}
+
 
 .item-noticia{
     margin-top: 12px;

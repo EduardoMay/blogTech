@@ -5,8 +5,13 @@ main{
 	border: 2px solid var(--color-primary);
 }
 
-aside{
+/* aside{
 	border: 2px solid var(--color-primary);
+} */
+
+aside article{
+	border: 2px solid var(--color-primary);
+	margin-bottom: 1em;
 }
 
 .grid{
@@ -19,6 +24,7 @@ aside{
 article{
 	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;
+	float: left;
 }
 /* TITULO DE LA NOTICIA */
 h1{
@@ -39,6 +45,8 @@ h1{
 }
 
 .cat{
+	width: 10%;
+	text-align: center;
 	background: #F5590B;
 }
 
