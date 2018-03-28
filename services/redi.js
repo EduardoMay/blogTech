@@ -1,0 +1,1 @@
+window.location="http://192.168.15.34/blog/index.php";

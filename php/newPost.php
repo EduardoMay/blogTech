@@ -21,8 +21,9 @@
             $info = utf8_encode($_POST['post']);
             $fch = $_POST['fch'];
             $stsC = $_POST['stsc'];
+            $fav = $_POST['fav'];
 
-            $resultado = setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $conexion);
+            $resultado = setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $conexion);
 
         }
 

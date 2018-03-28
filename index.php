@@ -15,8 +15,8 @@
 		<div class=ingreso>
 			<a href='./php/login.php' title='Ingresar'>Ingresar</a>
 			<a href='php/registro.php' title='Registrate'>Registrate</a>
-		</div>
-		";
+		</div>";
+		$like = '';
 		include './inicio.php';
 	}else{
 		$user = iniciarSesion('users', $conexion);
@@ -29,8 +29,8 @@
 			<div class=info>
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
-		</div>
-		";
+		</div>";
+		$like = '<a href= title=Ver mas class=i_button_r>Like</a>';
 
 		if ($user['tipo_user'] == 1) {
 			include './inicio.php';

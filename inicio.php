@@ -52,13 +52,14 @@
 						$cat = idCat($info['id_cat'], $conexion);
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
-						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">'.ucwords($per['nom_per']).'</p>';
+						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: '.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</p>';
 						echo '<section>';
 						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 						echo '</section>';
 						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
 						echo '<div class="clear"></div>';
 						echo '<a href=publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
+						echo $like;
 						echo '<div class="clear"></div>';
 						echo '</article>';
 					}

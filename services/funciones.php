@@ -53,8 +53,8 @@
         return $statement->FETCH();
     }
 
-    function setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $conexion) {
-        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, infore_sec, info_sec, fch_sec, statusC) VALUES(:idcat, :idper, :title, :infodes, :info, :fch, :statusc)");
+    function setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $conexion) {
+        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, infore_sec, info_sec, fch_sec, statusC, ten_sec) VALUES(:idcat, :idper, :title, :infodes, :info, :fch, :statusc, :fav)");
         $statement->execute([
             ':idcat' => $idCat,
             ':idper' => $idPer,
@@ -62,7 +62,8 @@
             ':infodes' => $des,
             ':info' => $info,
             ':fch' => $fch,
-            ':statusc' => $stsC
+            ':statusc' => $stsC,
+            ':fav' => $fav
         ]);
         return $statement;
     }
@@ -92,7 +93,7 @@
     }
 
     function nomP($id_per, $conexion) {
-		$s_per = $conexion->prepare("SELECT nom_per FROM perfiles WHERE id_per = :id_per");
+		$s_per = $conexion->prepare("SELECT nom_per, ape_per FROM perfiles WHERE id_per = :id_per");
 		$s_per->execute([':id_per' => $id_per]);
 		return $id_per = $s_per->fetch();
     }
