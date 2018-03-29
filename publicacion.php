@@ -1,7 +1,22 @@
 <?php session_start();
 	require './services/config.php';
 	require './services/funciones.php';
+
 	$conexion = conexion($bd_config);
+
+	$user = iniciarSesion('users', $conexion);
+	// OBTENER NOMBRE DE PERFIL
+	$nom = getPerfil($user['id_per'], $conexion);
+    
+
+    $infoP = "
+		<div class=perfil>
+			<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+			<div class=info>
+				<a href=./php/perfil.php>Ver Perfil</a>
+				<a href=./php/cerrar.php>Cerrar Sesion</a>
+		</div>";
+
 	$idSec = $_GET['var1'];
 	$statement = $conexion->prepare("SELECT * FROM secciones WHERE id_sec = :id_sec LIMIT 1");
 	$statement->execute([
@@ -10,6 +25,7 @@
 	$resultado = $statement->fetch();
 	$cat = idcat($resultado['id_cat'], $conexion);
 	$per = nomP($resultado['id_per'], $conexion);
+	$_SESSION['id_sec'] = $idSec;
 	// echo $resultado['id_cat'];
 	// echo $cat['nom_cat'];
 ?>
@@ -22,6 +38,7 @@
 		<title>Inicio</title>
 		<link rel="stylesheet" href="./assets/blog_styles.css">
 		<link rel="stylesheet" href="./assets/publicacion.css">
+		<link rel="stylesheet" href="./assets/fonts.css">
 		<link rel="shortcut icon" href="./assets/images/usuario.png" type="image/x-icon">
 	</head>
 	<body>
@@ -50,6 +67,11 @@
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
 			</menu>
+			<?php 
+				if (!empty($infoP)) {
+					echo $infoP;
+				}
+			?>
 				<!-- <div class="ingreso">
 				<a href="./php/login.php" title="Ingresar">Ingresar</a>
 				<a href="./php/registro.php" title="Registrate">Registrate</a>
@@ -78,38 +100,57 @@
 		</div>
 		<!-- COMENTARIOS -->
 		<div class="content-coment">
-			<div class="content-coment-title">
-				Comentarios
-			</div>
-			<!-- ENVIO DE COMENTARIO -->
-			<div class="item-perfil">
-				<form action="" method="post">
-					<div class="perfil-img">
-						<img src="./assets/images/usuario.png" title="Eduardo May">
-					</div>
-					<div class="perfil-comentario">
-						<textarea name="" id="" cols="30" rows="10"></textarea>
-					</div>
-					<div class="clear"></div>
-					<div class="perfil-boton">
-						<input type="submit" value="Enviar">
-					</div>
-					<div class="clear"></div>
-				</form>
-			</div>
+			<?php
+				if ($resultado['statusC'] == 1 && isset($_SESSION['usuario'])) {
+					echo '
+						<div class="content-coment-title">
+							Comentarios
+						</div>
+					';
+					// Envio de comentarios
+					echo '
+						<div class="item-perfil">
+							<form action="./php/comentarios.php" method="post">
+								<div class="perfil-img">
+									<img src="./assets/images/usuario.png" title="Eduardo May">
+								</div>
+								<div class="perfil-comentario">
+									<textarea name="com" id="" cols="30" rows="10"></textarea>
+								</div>
+								<div class="clear"></div>
+								<div class="perfil-boton">
+									<input type="submit" value="Enviar">
+								</div>
+								<div class="clear"></div>
+							</form>
+						</div>
+					';
+				}
+
+			?>
 			<!-- VER COMENTARIOS -->
-			<div class="item-comentarios">
-				<div class="coment-img">
-					<img src="./assets/images/usuario.png" title="Eduardo May">
-				</div>
-				<div class="coment-alinear">
-					<div class="coment-nombre">Lalo M</div>
-					<div class="coment">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid blanditiis architecto aspernatur quisquam nemo possimus voluptates necessitatibus beatae dolores exercitationem provident culpa modi dolore, magni facere sequi doloribus cupiditate laborum?
-					</div>
-				</div>
-				<div class="clear"></div>
-			</div>
+			<?php
+				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec");
+				$stm->execute([
+					':idsec'=>$idSec
+					]);
+					$comentarios = $stm;
+					foreach ($comentarios as $com) {
+						$namep = getPerfil($com['id_per'], $conexion);
+						echo '<div class="item-comentarios">';
+						echo '<div class="coment-img">
+						<img src="./assets/images/usuario.png" title="Eduardo May">
+						</div>';
+						echo '<div class="coment-alinear">
+						<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
+						<div class="coment">'.
+						$com['comentario']	
+						.'</div>
+						</div>';
+						echo '<div class="clear"></div>';
+						echo '</div>';
+					}
+			?>
 		</div>
 		<!-- PIE DE PAGINA -->
 		<footer>
