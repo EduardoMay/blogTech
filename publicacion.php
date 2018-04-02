@@ -3,19 +3,26 @@
 	require './services/funciones.php';
 
 	$conexion = conexion($bd_config);
-
-	$user = iniciarSesion('users', $conexion);
-	// OBTENER NOMBRE DE PERFIL
-	$nom = getPerfil($user['id_per'], $conexion);
     
+    if(!isset($_SESSION['usuario'])) {
+		$infoP = "  
+		<div class=ingreso>
+			<a href='./php/login.php' title='Ingresar'>Ingresar</a>
+			<a href='php/registro.php' title='Registrate'>Registrate</a>
+		</div>";
+	}else{
+		$user = iniciarSesion('users', $conexion);
+		// OBTENER NOMBRE DE PERFIL
+		$nom = getPerfil($user['id_per'], $conexion);
 
-    $infoP = "
+		$infoP = "
 		<div class=perfil>
 			<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
 			<div class=info>
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
 		</div>";
+	}
 
 	$idSec = $_GET['var1'];
 	$statement = $conexion->prepare("SELECT * FROM secciones WHERE id_sec = :id_sec LIMIT 1");
@@ -72,10 +79,6 @@
 					echo $infoP;
 				}
 			?>
-				<!-- <div class="ingreso">
-				<a href="./php/login.php" title="Ingresar">Ingresar</a>
-				<a href="./php/registro.php" title="Registrate">Registrate</a>
-			</div> -->
 		</header>
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div>
@@ -115,7 +118,7 @@
 									<img src="./assets/images/usuario.png" title="Eduardo May">
 								</div>
 								<div class="perfil-comentario">
-									<textarea name="com" id="" cols="30" rows="10"></textarea>
+									<textarea placeholder="Escribe tu comentario:" name="com" id="" cols="30" rows="10"></textarea>
 								</div>
 								<div class="clear"></div>
 								<div class="perfil-boton">
@@ -130,7 +133,8 @@
 			?>
 			<!-- VER COMENTARIOS -->
 			<?php
-				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec");
+				// TOMAR TODOS LOS COMENTARIOS QUE ESTES LIGADOS A LA SECCION SELECCIONADAS
+				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec ORDER BY id_per DESC");
 				$stm->execute([
 					':idsec'=>$idSec
 					]);

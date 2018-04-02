@@ -54,6 +54,14 @@ h1{
 	background: #FFEC00;
 }
 
+.likes{
+	margin-top: 1.1em;
+    margin-right: 10px;
+    float: right;
+    padding: .3em;
+    font-size: 1.1em;
+}
+
 section{
 	width: 80%;
 	text-align: justify;

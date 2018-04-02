@@ -59,7 +59,10 @@
 						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
 						echo '<div class="clear"></div>';
 						echo '<a href=publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
+						echo '<form action=./php/likes.php?val='.$info['id_sec'].' method=post>';
 						echo $like;
+						echo '</form>';
+						echo '<p class=likes>3 Likes</p>';
 						echo '<div class="clear"></div>';
 						echo '</article>';
 					}
