@@ -41,10 +41,6 @@
 				<img src="../assets/images/usuario.svg" alt="">
 				<a href="<?php echo RUTA.'views/admin_view/viewUsers.view.php'; ?>">Usuarios</a>
 			</div>
-			<div class="grid_3">
-				<img src="../assets/images/nota.svg" alt="">
-				<a href="<?php echo RUTA.'inicio.php' ?>">Posts</a>
-			</div>
 		</main>
 		<!-- PIE DE PAGINA -->
 		<footer>

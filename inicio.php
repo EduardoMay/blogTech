@@ -14,7 +14,7 @@
 		<!-- ENCABEZADO DE LA PAGINA -->
 		<header id="header" class="">
 			<div class="title">
-				<a href="./index.php" title="Inicio" class="title_a">Blog de Tecnologia</a>
+				<a href="<?php echo RUTA ?>" title="Inicio" class="title_a">Blog de Tecnologia</a>
 			</div>
 			<menu type="context toolbar" class="menu">
 				<li class="cat_menu"><a href="" class="menu_a">Inicio</a>
@@ -47,7 +47,7 @@
 						$cat = idCat($info['id_cat'], $conexion);
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
-						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: '.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</p>';
+						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
 						echo '<section>';
 						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 						echo '</section>';
