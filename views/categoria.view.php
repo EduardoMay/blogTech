@@ -24,7 +24,7 @@
 			<a href="<?PHP echo RUTA ?>" title="Inicio" class="title_a">Blog de Tecnologia</a>
 		</div>
 		<menu type="context toolbar" class="menu">
-			<li class="cat_menu"><a href="" class="menu_a">Inicio</a>
+			<li class="cat_menu"><a href="<?php echo RUTA ?>" class="menu_a">Inicio</a>
 			</li>
 			<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
 				<ul class="subcat_menu">
@@ -36,7 +36,7 @@
 				?>
 				</ul>
 			</li>
-			<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
+			<li class="cat_menu"><a href="<?php echo RUTA.'php/tendencias.php' ?>" class="menu_a">Tendencias</a></li>
 		</menu>
 		<?php 
 			if (!empty($infoP)) {
@@ -48,24 +48,28 @@
     <div class="grid">
 		<main>
 			<?php
-				foreach ($resultado as $info ) {
-					$per = nomP($info['id_per'], $conexion);
-					$cat = idCat($info['id_cat'], $conexion);
-					echo '<article>';
-					echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
-					echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
-					echo '<section>';
-					echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
-					echo '</section>';
-					echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
-					echo '<div class="clear"></div>';
-					echo '<a href='.RUTA.'publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
-					echo '<form action=./php/likes.php?val='.$info['id_sec'].' method=post>';
-					echo $like;
-					echo '</form>';
-					echo '<p class=likes>3 Likes</p>';
-					echo '<div class="clear"></div>';
-					echo '</article>';
+				if($resultado){
+					foreach ($resultado as $info ) {
+						$per = nomP($info['id_per'], $conexion);
+						$cat = idCat($info['id_cat'], $conexion);
+						echo '<article>';
+						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
+						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
+						echo '<section>';
+						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
+						echo '</section>';
+						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
+						echo '<div class="clear"></div>';
+						echo '<a href='.RUTA.'publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
+						echo '<form action=./php/likes.php?val='.$info['id_sec'].' method=post>';
+						echo $like;
+						echo '</form>';
+						echo '<p class=likes>3 Likes</p>';
+						echo '<div class="clear"></div>';
+						echo '</article>';
+					}
+				} else{
+					echo '<h1>SIN PUBLICACIONES</h1>';
 				}
 			?>
         </main>

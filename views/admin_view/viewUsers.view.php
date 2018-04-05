@@ -63,7 +63,7 @@
             </tr>
             <tr>
                 <td>
-                    <a href="<?php echo RUTA.'/php/admin.php' ?>">Regresar</a>
+                    <a href="<?php echo RUTA.'php/admin.php' ?>">Regresar</a>
                 </td>
                 <td>
                     <input type="submit" value="Guardar">

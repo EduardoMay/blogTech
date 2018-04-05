@@ -29,7 +29,7 @@
 					?>
 					</ul>
 				</li>
-				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
+				<li class="cat_menu"><a href="<?php echo RUTA.'php/tendencias.php' ?>" class="menu_a">Tendencias</a></li>
 			</menu>
 			<?php 
 				if (!empty($infoP)) {
@@ -76,7 +76,7 @@
 							$cat = idCat($info['id_cat'], $conexion);
 							echo '<article>';
 							echo '<h1 class=title_as>'.utf8_decode($info['title_sec']).'</h1>';
-							echo '<section>';
+							echo '<section class=aside-info>';
 							echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 							echo '</section>';
 							echo '<div class="clear"></div>';

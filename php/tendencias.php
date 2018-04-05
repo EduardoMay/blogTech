@@ -2,13 +2,9 @@
     include_once '../services/config.php';
     include_once '../services/funciones.php';
     $conexion = conexion($bd_config);
-    $cat = $_GET['cat'];
 
-    // $statement = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat");
-    // $statement->execute([':cat'=>$cat]);
-
-    $noticia = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat");
-	$noticia->execute([':cat'=>$cat]);
+    $noticia = $conexion->prepare("SELECT * FROM secciones WHERE ten_sec = 1");
+	$noticia->execute();
 	$resultado = $noticia;
 
     if(!isset($_SESSION['usuario'])) {
@@ -33,4 +29,4 @@
 		$like = '<input type=submit class=i_button_r value=Like></input>';
     }
 
-    require_once '../views/categoria.view.php';
+    require_once '../views/tendencias.view.php';

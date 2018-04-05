@@ -67,6 +67,11 @@ section{
 	text-align: justify;
 }
 
+.aside-info{
+	margin-top: 1rem;
+	width: 100%;
+}
+
 img{
 	width: 20%;
 }
