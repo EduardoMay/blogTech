@@ -134,33 +134,36 @@
 			<!-- VER COMENTARIOS -->
 			<?php
 				// TOMAR TODOS LOS COMENTARIOS QUE ESTES LIGADOS A LA SECCION SELECCIONADAS
-				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec ORDER BY id_per DESC");
+				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec ORDER BY fch_com DESC");
+				$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
 				$stm->execute([
 					':idsec'=>$idSec
-					]);
-					$comentarios = $stm;
-					if ($stm) {
-						echo '
-							<div class="content-coment-title">
-								Comentarios
-							</div>
-						';
-					}
-					foreach ($comentarios as $com) {
-						$namep = getPerfil($com['id_per'], $conexion);
-						echo '<div class="item-comentarios">';
-						echo '<div class="coment-img">
-						<img src="./assets/images/usuario.png" title="Eduardo May">
-						</div>';
-						echo '<div class="coment-alinear">
-						<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
-						<div class="coment">'.
-						$com['comentario']	
-						.'</div>
-						</div>';
-						echo '<div class="clear"></div>';
-						echo '</div>';
-					}
+				]);
+				$query->execute([':idsec'=>$idSec]);
+				$comentarios = $stm;
+				$ttlCom = $query->fetch();
+				if ($stm) {
+					echo '
+						<div class="content-coment-title">
+							Comentarios
+						</div><p>'.$ttlCom['count(*)'].' Comentarios</p>
+					';
+				}
+				foreach ($comentarios as $com) {
+					$namep = getPerfil($com['id_per'], $conexion);
+					echo '<div class="item-comentarios">';
+					echo '<div class="coment-img">
+					<img src="./assets/images/usuario.png" title="Eduardo May">
+					</div>';
+					echo '<div class="coment-alinear">
+					<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
+					<div class="coment">'.
+					ucwords($com['comentario'])	
+					.'</div>
+					</div>';
+					echo '<div class="clear"></div>';
+					echo '</div>';
+				}
 			?>
 		</div>
 		<!-- PIE DE PAGINA -->
