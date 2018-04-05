@@ -21,17 +21,12 @@
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
 					<ul class="subcat_menu">
-						<li><a href="" class="subcat_a">Moviles</a></li>
-						<li><a href="" class="subcat_a">Apps y Software</a></li>
-						<li><a href="" class="subcat_a">Juegos</a></li>
-						<li><a href="" class="subcat_a">Motor</a></li>
-						<li><a href="" class="subcat_a">Portatiles</a></li>
-						<li><a href="" class="subcat_a">Computadoras</a></li>
-						<li><a href="" class="subcat_a">Televisores</a></li>
-						<li><a href="" class="subcat_a">Gadgets</a></li>
-						<li><a href="" class="subcat_a">Realidad Virtual</a></li>
-						<li><a href="" class="subcat_a">Audio</a></li>
-						<li><a href="" class="subcat_a">Camaras</a></li>
+					<?php
+						$cat = getCategorias('categorias', $conexion);
+						foreach ($cat as $valor) {
+							echo '<li><a href="'.RUTA.'php/cat.php?cat='.$valor['id_cat'].'" class="subcat_a">'.$valor['nom_cat'].'</a></li>';
+						}
+					?>
 					</ul>
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>

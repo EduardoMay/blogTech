@@ -5,10 +5,10 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Inicio</title>
-		<link rel="stylesheet" href="./assets/blog_styles.css">
-		<link rel="stylesheet" href="./assets/admin.css">
-		<link rel="stylesheet" href="./assets/fonts.css">
-		<link rel="shortcut icon" href="./assets/images/usuario.png" type="image/x-icon">
+		<link rel="stylesheet" href="../assets/blog_styles.css">
+		<link rel="stylesheet" href="../assets/admin.css">
+		<link rel="stylesheet" href="../assets/fonts.css">
+		<link rel="shortcut icon" href="../assets/images/usuario.png" type="image/x-icon">
 	</head>
 	<body>
 		<!-- ENCABEZADO DE LA PAGINA -->
@@ -34,15 +34,15 @@
 		<!-- SELECCION -->
 		<main class="grid">
 			<div class="grid_1">
-				<img src="./assets/images/archivo-nuevo.svg" alt="">
+				<img src="../assets/images/archivo-nuevo.svg" alt="">
 				<a href="<?php echo RUTA.'php/newPost.php'; ?>">Nueva Publicacion</a>
 			</div>
 			<div class="grid_2">
-				<img src="./assets/images/usuario.svg" alt="">
+				<img src="../assets/images/usuario.svg" alt="">
 				<a href="<?php echo RUTA.'views/admin_view/viewUsers.view.php'; ?>">Usuarios</a>
 			</div>
 			<div class="grid_3">
-				<img src="./assets/images/nota.svg" alt="">
+				<img src="../assets/images/nota.svg" alt="">
 				<a href="<?php echo RUTA.'inicio.php' ?>">Posts</a>
 			</div>
 		</main>

@@ -120,11 +120,8 @@
     /* border: 1px solid black; */
     margin-top: 2.5em;
     /* border-bottom: 2px solid var(--color-primary); */
+    box-shadow: -5px 0px 0px 0px orange inset;
     transition: all 500ms;
-}
-
-.item-comentarios:hover{
-    box-shadow: 0px 5px 0px 0px orange;
 }
 
 .coment-img{

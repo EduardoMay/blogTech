@@ -139,6 +139,13 @@
 					':idsec'=>$idSec
 					]);
 					$comentarios = $stm;
+					if ($stm) {
+						echo '
+							<div class="content-coment-title">
+								Comentarios
+							</div>
+						';
+					}
 					foreach ($comentarios as $com) {
 						$namep = getPerfil($com['id_per'], $conexion);
 						echo '<div class="item-comentarios">';

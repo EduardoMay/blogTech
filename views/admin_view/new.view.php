@@ -43,7 +43,7 @@
 					<thead>
 						<tr>
 							<th>
-								<a href="../controllers/admin.php">Volver</a>
+								<a href="../php/admin.php">Volver</a>
 							</th>
 						</tr>
 					</thead>
