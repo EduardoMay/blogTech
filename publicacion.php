@@ -134,14 +134,17 @@
 			<!-- VER COMENTARIOS -->
 			<?php
 				// TOMAR TODOS LOS COMENTARIOS QUE ESTES LIGADOS A LA SECCION SELECCIONADAS
-				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec ORDER BY fch_com DESC");
-				$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
+				$stm = $conexion->prepare("SELECT * FROM comentarios WHERE id_sec = :idsec ORDER BY id_com DESC");
 				$stm->execute([
 					':idsec'=>$idSec
 				]);
-				$query->execute([':idsec'=>$idSec]);
 				$comentarios = $stm;
+				
+				// CONTADOR DE COMENTARIOS
+				$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
+				$query->execute([':idsec'=>$idSec]);
 				$ttlCom = $query->fetch();
+
 				if ($stm) {
 					echo '
 						<div class="content-coment-title">

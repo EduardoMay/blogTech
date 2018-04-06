@@ -23,22 +23,11 @@
 	// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// echo $_POST['boton'];
 	// }
-	if (!empty($_POST['boton'])) {
-		echo $_POST['boton'];
-	}
-?>
+	$likes = $conexion->prepare("SELECT * FROM likes");
+	$likes->execute();
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
-<body>
-	<form action="pruebas.php" method="post">
-		<input type="submit" value="Comentar" name=boton>
-	</form>
-</body>
-</html>
+	foreach ($likes as $like ) {
+		if ($like['id_sec'] == 10 ) {
+			echo $like['megusta'];
+		}
+	}

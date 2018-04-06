@@ -4,6 +4,7 @@
 
 	$conexion = conexion($bd_config);
 
+	// SELECIONAR TODAS LAS NOTICAS
 	$noticia = $conexion->prepare("SELECT * FROM secciones");
 	$noticia->execute();
 	$resultado = $noticia;
@@ -30,7 +31,7 @@
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
 		</div>";
-		$like = '<input type=submit class=i_button_r value=Like></input>';
+		$like = '<input type=submit class=i_button_r value="Me gusta"></input>';
 
 		if ($user['tipo_user'] == 1) {
 			include './inicio.php';
