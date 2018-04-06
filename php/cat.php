@@ -30,7 +30,7 @@
 				<a href=".RUTA."/php/perfil.php>Ver Perfil</a>
 				<a href=".RUTA."/php/cerrar.php>Cerrar Sesion</a>
 		</div>";
-		$like = '<input type=submit class=i_button_r value=Like></input>';
+		$like = '<input type=submit class=i_button_r value=Like name=like></input>';
     }
 
     require_once '../views/categoria.view.php';

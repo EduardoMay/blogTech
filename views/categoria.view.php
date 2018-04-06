@@ -61,10 +61,41 @@
 						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
 						echo '<div class="clear"></div>';
 						echo '<a href='.RUTA.'publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
-						echo '<form action=./php/likes.php?val='.$info['id_sec'].' method=post>';
-						echo $like;
-						echo '</form>';
-						echo '<p class=likes>3 Likes</p>';
+						if (!isset($_SESSION['usuario'])) { //CUANDO NO ESTA LOGEADO ALGUN USUARIO
+							// CONTADOR DE LIKES
+							$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
+							$likes->execute([':idsec'=>$info['id_sec']]);
+							$megusta = $likes->fetch();
+
+							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
+						} else {
+							// CONTADOR DE LIKES
+							$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
+							$likes->execute([':idsec'=>$info['id_sec']]);
+							$megusta = $likes->fetch();
+
+
+							$query = $conexion->prepare("SELECT * FROM likes WHERE id_per = :idper AND id_sec = :idsec LIMIT 1");
+							$query->execute([
+								':idper' => $_SESSION['id_per'],
+								':idsec' => $info['id_sec']
+							]);
+							$mg = $query->fetch();
+							if ($mg == false) {
+								echo '<form action='.RUTA.'php/likes.php?val='.$info['id_sec'].' method=post>';
+								echo $like;
+								echo '</form>';
+							} else {
+								echo '<form action='.RUTA.'php/likes.php?val='.$info['id_sec'].' method=post>';
+								echo '<input type=submit class=i_button_r value="No me gusta" name="dontlike"></input>';
+								echo '</form>';
+							}
+							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
+						}
+						// echo '<form action=./php/likes.php?val='.$info['id_sec'].' method=post>';
+						// echo $like;
+						// echo '</form>';
+						// echo '<p class=likes>3 Likes</p>';
 						echo '<div class="clear"></div>';
 						echo '</article>';
 					}

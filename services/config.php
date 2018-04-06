@@ -6,6 +6,9 @@
         define('RUTA','http://192.168.1.71/blog/');
     }
 
+    // CONSTANTES
+    define("BACK", "<script>javascript:history.back()</script>");
+
     $bd_config = [
         'db_name' => 'blog',
         'user' => 'root',
