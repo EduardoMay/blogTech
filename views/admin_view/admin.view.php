@@ -23,7 +23,7 @@
 				<p> <span class="icon-smile"></span> <?php echo ucwords($nom['nom_per']) ?> <span class="icon-play3"></span></p>
 				<div class="info">
 					<a href="<?php echo RUTA.'php/perfil.php' ?>">Ver Perfil</a>
-					<a href="./php/cerrar.php">Cerrar Sesion</a>
+					<a href=" <?php echo RUTA.'php/cerrar.php '?>">Cerrar Sesion</a>
 				</div>
 			</div>
 		</header>

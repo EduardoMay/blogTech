@@ -81,10 +81,17 @@
             ':email'    =>  $newEmail
         ]);
         if (!empty($newUser)) {
-            $statement2 = $conexion->prepare("UPDATE users SET nom_user = :user, pas_user = :pass WHERE id_per = :id");
+            $statement2 = $conexion->prepare("UPDATE users SET nom_user = :user WHERE id_per = :id");
             $statement2->execute([
                 'id'    =>  $id,
                 ':user' =>  $newUser,
+            ]);
+            $_SESSION['usuario'] = $newUser;
+        }
+        if (!empty($newPass)) {
+            $statement2 = $conexion->prepare("UPDATE users SET pas_user = :pass WHERE id_per = :id");
+            $statement2->execute([
+                'id'    =>  $id,
                 ':pass' =>  $newPass
             ]);
         }

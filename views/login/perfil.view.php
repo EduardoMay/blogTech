@@ -18,7 +18,7 @@
             <li class=cat_menu style="line-height: 100px; color: white;">Tu Perfil</li>
 		</menu>
 		<div class="perfil">
-			<a href="../php/cerrar.php" style="color: white;">Cerrar Sesion</a>
+			<a href="<?php RUTA.'php/cerrar.php' ?>" style="color: white;">Cerrar Sesion</a>
 		</div>
     </header>
     <div class="clear"></div>
@@ -35,14 +35,10 @@
                 <label for="">Apellidos:</label><input type="text" value="<?php echo $ape ?>" name="ape">
             </div>
             <div class="content-item">
-                <p>Al cambiar tu usuario se cerrara tu sesion</p>
-                <label for="">Usuario:</label><input type="text" value="<?php  echo $userN ?>" name="user">
-            </div>
-            <div class="content-item">
                 <label for="">Correo:</label><input type="text" value="<?php   echo $email ?>" name="email">
             </div>
             <div class="content-item">
-                <p>Actualizar contraseña</p>
+                <label for="">Usuario:</label><input type="text" value="<?php  echo $userN ?>" name="user">
             </div>
             <div class="content-item">
                 <label for="">Nueva Contraseña:</label><input type="text" name="pass">
