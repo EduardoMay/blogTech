@@ -11,7 +11,7 @@
 	$conexion = conexion($bd_config);
 	$admin = iniciarSesion('users', $conexion);
 
-	if ($admin['tipo_user'] == 2) {
+	if ($admin['tipo_user'] == 3) {
 		$categorias = getCategorias('categorias', $conexion);
 		$nom = getPerfil($admin['id_per'], $conexion);
 
@@ -28,7 +28,13 @@
 				$stsC = $_POST['stsc'];
 				$fav = $_POST['fav'];
 	
-				$resultado = setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $conexion);
+				
+				$nombre_imagen = $_FILES['imagen']['name'];
+				$tipo_imagen = $_FILES['imagen']['type'];
+				$tamanio_imagen = $_FILES['imagen']['size'];
+				
+				$resultado = setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $nombre_imagen, $conexion);
+				// $postimg = postImagen($nombre_imagen, $tipo_imagen, $tamanio_imagen, $conexion);
 			}
 		}
 		include '../views/admin_view/new.view.php';

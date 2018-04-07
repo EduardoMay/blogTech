@@ -39,7 +39,7 @@
 			</div>
 			<div class="grid_2">
 				<img src="../assets/images/usuario.svg" alt="">
-				<a href="<?php echo RUTA.'views/admin_view/viewUsers.view.php'; ?>">Usuarios</a>
+				<a href="<?php echo RUTA.'php/viewusers.php'; ?>">Usuarios</a>
 			</div>
 		</main>
 		<!-- PIE DE PAGINA -->

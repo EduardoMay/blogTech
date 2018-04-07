@@ -35,6 +35,8 @@
 	$_SESSION['id_sec'] = $idSec;
 	// echo $resultado['id_cat'];
 	// echo $cat['nom_cat'];
+
+	$img = postimg($idSec, $conexion);
 ?>
 <!DOCTYPE html>
 <html>
@@ -83,8 +85,8 @@
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div>
 		 <!--PUBLICACION DE LA NOTICIA  -->
-		<div class="banner">
-			<!-- <img src="http://www.publicdomainpictures.net/pictures/150000/velka/banner-header-tapete-1450520058Odj.jpg" alt=""> -->
+		<?= '<div class=banner style="background-image:url(./assets/posts/'.$img['postimg'].');">' ?>
+			
 		</div>
 		<div class="content-noticia">
 			<div class="item-header">
@@ -146,7 +148,7 @@
 				$comentarios = $stm;
 				
 
-				if ($_SESSION['tipo_user'] == 2) {
+				if ($_SESSION['tipo_user'] == 2 || $_SESSION['tipo_user'] == 3) {
 					foreach ($comentarios as $com) {
 						$elimianar = 	'<form action='.RUTA.'php/comentarios.php method=post>
 											<div>

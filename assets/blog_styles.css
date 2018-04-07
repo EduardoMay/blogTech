@@ -2,8 +2,8 @@
 
 /* VARIABLES */
 :root{
-	/* rgba(0, 176, 80, 1) #E53935*/
-	--color-primary: #009688;
+	/* rgba(0, 176, 80, 1) #009688*/
+	--color-primary: #E53935;
 	--font-primary: 'Fjalla One';
 	--font-secundary: arial;
 }
@@ -179,8 +179,11 @@ header{
 	float: left;
 }
 
-span{
-	margin: 5px;
+span img{
+	margin: 0 5px;
+	width: 50px;
+    position: relative;
+    top: 35px;
 }
 
 .icon-play3{
@@ -263,12 +266,16 @@ footer{
 	display: inline-block;
 	width: 100px;
 }
-
-.content-item input{
-	width: 30%;
+.content-item input[type=text] {
+	width: 100px;
+	-webkit-transition: width .35s ease-in-out;
+	transition: width .35s ease-in-out;
+  }
+.content-item input[type=text]:focus {
+	width: 250px;
 }
 
-.content-item label, .content-item input {
+.content-item label, .content-item .ani {
 	padding: 1em;
 }
 

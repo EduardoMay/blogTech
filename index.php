@@ -23,10 +23,12 @@
 		$user = iniciarSesion('users', $conexion);
 		// OBTENER NOMBRE DE PERFIL
 		$nom = getPerfil($user['id_per'], $conexion);
+		// OBTENER EL AVATAR
+		$avatar = avatar($conexion);
 
 		$infoP = "
 		<div class=perfil>
-			<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+			<p> <span class><img src=./assets/avatars/".$avatar['avatar']." alt= class=avatar></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
 			<div class=info>
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
@@ -39,13 +41,22 @@
 			// include './views/admin_view/admin.view.php';
 			$infoP = "
 			<div class=perfil>
-				<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+				<p> <span class=><img src=./assets/avatars/".$avatar['avatar']." alt= class=avatar></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+				<div class=info>
+					<a href=./php/perfil.php>Ver Perfil</a>
+					<a href=./php/cerrar.php>Cerrar Sesion</a>
+			</div>";
+			include './inicio.php';
+		} elseif ($user['tipo_user'] == 3) {
+			# code...
+			$infoP = "
+			<div class=perfil>
+				<p> <span class=><img src=./assets/avatars/".$avatar['avatar']." class=avatar></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
 				<div class=info>
 					<a href=./php/admin.php>Admin</a>
 					<a href=./php/perfil.php>Ver Perfil</a>
 					<a href=./php/cerrar.php>Cerrar Sesion</a>
 			</div>";
 			include './inicio.php';
-		} else{
 		}
 	}

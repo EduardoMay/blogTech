@@ -41,7 +41,7 @@
 		<!-- SELECCION -->
 		<div class="margin"></div>
 		<main class="grid">
-			<form action="<?= RUTA.'php/newpost.php' ?>" method="post">
+			<form action="<?= RUTA.'php/newpost.php' ?>" method="post" enctype="multipart/form-data">
 				<table>
 					<caption>Nueva Pulicacion</caption>
 					<thead>
@@ -116,6 +116,12 @@
 									<option value="1">Si</option>
 									<option value="0">No</option>
 								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Banner</td>
+							<td>
+								<input type="file" name="imagen">
 							</td>
 						</tr>
 						<tr>

@@ -43,7 +43,7 @@
 			<main>
 				<?php
 					foreach ($resultado as $info ) {
-						
+						$img = postimg($info['id_sec'], $conexion);
 
 						$per = nomP($info['id_per'], $conexion);
 						$cat = idCat($info['id_cat'], $conexion);
@@ -53,7 +53,7 @@
 						echo '<section>';
 						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 						echo '</section>';
-						echo '<img src="http://logok.org/wp-content/uploads/2014/06/LG-Logo-face-880x660.png" alt="">';
+						echo '<img src="./assets/posts/'.$img['postimg'].'" alt="">';
 						echo '<div class="clear"></div>';
 						echo '<a href=publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
 						if (!isset($_SESSION['usuario'])) { //CUANDO NO ESTA LOGEADO ALGUN USUARIO

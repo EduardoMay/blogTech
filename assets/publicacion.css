@@ -7,7 +7,7 @@
 .banner{
     width: 100%;
     height: 500px;
-    background-image: url(http://www.publicdomainpictures.net/pictures/150000/velka/banner-header-tapete-1450520058Odj.jpg);
+    /* background-image: url(../assets/posts/banner1.jpg); */
     background-size: 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;

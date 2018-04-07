@@ -53,8 +53,12 @@
         return $statement->FETCH();
     }
 
-    function setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $conexion) {
-        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, infore_sec, info_sec, fch_sec, statusC, ten_sec) VALUES(:idcat, :idper, :title, :infodes, :info, :fch, :statusc, :fav)");
+    function setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $nombre_imagen, $conexion) {
+        // RUTA DE LA CARPETA DESTINO EN SERVIDOR
+		$carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/blog/assets/posts/';
+		// MOVEMOS LA IMAGEN DEL DIRECTORIO TEMPORAL AL DIRECTORIO ESCOGIDO
+		move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino.$nombre_imagen);
+        $statement = $conexion->prepare("INSERT INTO secciones(id_cat, id_per, title_sec, infore_sec, info_sec, fch_sec, statusC, ten_sec, postimg) VALUES(:idcat, :idper, :title, :infodes, :info, :fch, :statusc, :fav, :img)");
         $statement->execute([
             ':idcat' => $idCat,
             ':idper' => $idPer,
@@ -63,13 +67,16 @@
             ':info' => $info,
             ':fch' => $fch,
             ':statusc' => $stsC,
-            ':fav' => $fav
+            ':fav' => $fav,
+            ':img' => $nombre_imagen
         ]);
         return $statement;
     }
 
-    function deletePerfil() {
-    
+    function postimg($idsec, $conexion) {
+        $statement = $conexion->prepare("SELECT * FROM secciones WHERE id_sec = :idsec");
+        $statement->execute([':idsec' => $idsec]);
+        return $avatar = $statement->fetch();
     }
 
     function updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $newPass, $conexion) {
@@ -109,4 +116,28 @@
 		$s_cat = $conexion->prepare("SELECT nom_cat FROM categorias WHERE id_cat = :id_cat");
 		$s_cat->execute([':id_cat' => $id_cat]);
 		return $id_cat = $s_cat->fetch();
-	}
+    }
+    
+    function avatar($conexion) {
+        $statement = $conexion->prepare("SELECT * FROM perfiles WHERE id_per = :idper");
+        $statement->execute([':idper' => $_SESSION['id_per']]);
+        return $avatar = $statement->fetch();
+    }
+
+    function subirImagen($nombre_imagen, $tipo_imagen, $tamanio_imagen, $conexion) {
+        $nombre_imagen = $_SESSION['usuario'].'.png';
+		// echo $tipo_imagen;
+		$error = '';
+			// RUTA DE LA CARPETA DESTINO EN SERVIDOR
+			$carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/blog/assets/avatars/';
+			// MOVEMOS LA IMAGEN DEL DIRECTORIO TEMPORAL AL DIRECTORIO ESCOGIDO
+			move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino.$nombre_imagen);
+			$carpeta = $carpeta_destino.$nombre_imagen;
+			$sql = "UPDATE perfiles SET avatar = '$nombre_imagen' WHERE id_per = ".$_SESSION['id_per'];
+			$statement = $conexion->prepare($sql);
+			$statement->execute();
+			// header('Location: '.RUTA.'php/perfil.php');
+        return $error;
+    }
+
+    

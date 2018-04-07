@@ -9,3 +9,7 @@ caption{
 td{
     text-align: center;
 }
+
+select{
+    padding: .5em;
+}
