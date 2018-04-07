@@ -5,7 +5,7 @@
 	$conexion = conexion($bd_config);
 
 	// SELECIONAR TODAS LAS NOTICAS
-	$noticia = $conexion->prepare("SELECT * FROM secciones");
+	$noticia = $conexion->prepare("SELECT * FROM secciones ORDER BY id_sec DESC");
 	$noticia->execute();
 	$resultado = $noticia;
 	

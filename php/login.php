@@ -14,10 +14,15 @@
             ':pas'=>$pass
         ]);
         $resultado = $statement->FETCH();
-        if ($resultado !== false) {
-            $_SESSION['usuario'] = $user;
-            $_SESSION['id_per'] = $resultado['id_per'];
-            header('Location: '.RUTA.'index.php');
+        if ($resultado['nom_user'] === $user && $resultado['pas_user'] === $pass) {
+            if ($resultado !== false) {
+                $_SESSION['usuario'] = $user;
+                $_SESSION['id_per'] = $resultado['id_per'];
+                $_SESSION['tipo_user'] = $resultado['tipo_user'];
+                header('Location: '.RUTA.'index.php');
+            }else {
+                $error = '<li class=error>Tu usuario y/o contraseña son incorrectos</li>';
+            }
         }else {
             $error = '<li class=error>Tu usuario y/o contraseña son incorrectos</li>';
         }

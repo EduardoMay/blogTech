@@ -18,10 +18,14 @@
     height: 100%;
 } */
 
+h1, h2, h3, h4, h5, h6, p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 /* POSTS */
 .content-noticia{
-    width: 90%;
+    width: 80%;
     margin: auto;
     margin-top: 2.5em;
     padding: 12px;
@@ -105,11 +109,18 @@
 
 .perfil-boton input{
     margin-top: 1em;
-    background: transparent;
-    border: 1px solid var(--color-primary); 
+    background: var(--color-primary);
+    border: 1px var(--color-primary) solid;
+    color: white; 
     padding: .5em 1em;
     float: right;
     cursor: pointer;
+    transition: all .3s;
+}
+
+.perfil-boton input:hover{
+    background: white;
+    color: var(--color-primary); 
 }
 
 /* SECCION PARA VER LOS COMENTARIOS */
@@ -136,8 +147,17 @@
     font-weight: bold;
 }
 
+.fch{
+    font-weight: bold;
+    font-size: .6rem;
+}
+
 .coment-alinear{
     width: 90%;
     margin-left: 1em;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.coment{
+    padding: .5em 0;
 }

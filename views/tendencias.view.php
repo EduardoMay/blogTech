@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../assets/index.css">
 	<link rel="stylesheet" href="../assets/fonts.css">
 	<link rel="shortcut icon" href="../assets/images/usuario.png" type="image/x-icon">
-    <title></title>
+    <title>Tendencias</title>
     <style>
         .grid{
             display: flex;

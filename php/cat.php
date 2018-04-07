@@ -3,6 +3,8 @@
     include_once '../services/funciones.php';
     $conexion = conexion($bd_config);
     $cat = $_GET['cat'];
+	
+	$nomCat = idcat($cat, $conexion);
 
     // $statement = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat");
     // $statement->execute([':cat'=>$cat]);

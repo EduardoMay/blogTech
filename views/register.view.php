@@ -21,7 +21,7 @@
 		<div class="der">
 			<div class="margin_top"></div>
 			<div class="div_center">
-				<img src="../assets/images/usuario.svg" alt="">
+				<img src="../assets/images/usuario.svg" class=svg-img alt="">
 				<form action="registro.php" method="POST">
 					<div class="data">
 						<input type="text" name="nom" placeholder="Nombre" required>

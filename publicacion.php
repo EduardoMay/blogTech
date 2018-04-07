@@ -88,7 +88,7 @@
 		</div>
 		<div class="content-noticia">
 			<div class="item-header">
-				<?php echo '<p class="item-titulo">'.$resultado['title_sec'].'</p>' ?>
+				<?php echo '<p class="item-titulo">'.utf8_decode($resultado['title_sec']).'</p>' ?>
 				<?php echo '<p class="cat">'.$cat['nom_cat'].'</p><p class="date">'.$resultado['fch_sec'].'</p><p class="autor">'.ucwords($per['nom_per']).'</p>' ?>
 			</div>
 			<div class="clear"></div>
@@ -105,10 +105,15 @@
 		<div class="content-coment">
 			<?php
 				if ($resultado['statusC'] == 1 && isset($_SESSION['usuario'])) {
+					// CONTADOR DE COMENTARIOS
+					$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
+					$query->execute([':idsec'=>$idSec]);
+					$ttlCom = $query->fetch();
+
 					echo '
-						<div class="content-coment-title">
+						<div class="content-coment-title" id=comentarios>
 							Comentarios
-						</div>
+						</div><p>'.$ttlCom['count(*)'].' Comentarios</p>
 					';
 					// Envio de comentarios
 					echo '
@@ -122,7 +127,7 @@
 								</div>
 								<div class="clear"></div>
 								<div class="perfil-boton">
-									<input type="submit" value="Enviar">
+									<input type="submit" value="Enviar" name=comentar>
 								</div>
 								<div class="clear"></div>
 							</form>
@@ -140,37 +145,58 @@
 				]);
 				$comentarios = $stm;
 				
-				// CONTADOR DE COMENTARIOS
-				$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
-				$query->execute([':idsec'=>$idSec]);
-				$ttlCom = $query->fetch();
 
-				if ($stm) {
-					echo '
-						<div class="content-coment-title">
-							Comentarios
-						</div><p>'.$ttlCom['count(*)'].' Comentarios</p>
-					';
-				}
-				foreach ($comentarios as $com) {
-					$namep = getPerfil($com['id_per'], $conexion);
-					echo '<div class="item-comentarios">';
-					echo '<div class="coment-img">
-					<img src="./assets/images/usuario.png" title="Eduardo May">
-					</div>';
-					echo '<div class="coment-alinear">
-					<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
-					<div class="coment">'.
-					ucwords($com['comentario'])	
-					.'</div>
-					</div>';
-					echo '<div class="clear"></div>';
-					echo '</div>';
+				if ($_SESSION['tipo_user'] == 2) {
+					foreach ($comentarios as $com) {
+						$elimianar = 	'<form action='.RUTA.'php/comentarios.php method=post>
+											<div>
+											<input type=submit value=Eliminar name=eliminar class=eliminar>
+											<input type=text value='.$com['id_com'].' name=idcom style="visibility:hidden">
+											</div>
+										</form>';
+
+						$namep = getPerfil($com['id_per'], $conexion);
+						echo '<div class="item-comentarios">';
+						echo '<div class="coment-img">
+						<img src="./assets/images/usuario.png" title="Eduardo May">
+						</div>';
+						echo '<div class="coment-alinear">
+						<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
+						<div class="fch">'.
+						ucwords($com['fch_com'])	
+						.'</div>
+						<div class="coment">'.
+						ucwords($com['comentario'])	
+						.'</div>
+						'.$elimianar.'
+						</div>';
+						echo '<div class="clear"></div>';
+						echo '</div>';
+					}
+				} else {
+					foreach ($comentarios as $com) {
+						$namep = getPerfil($com['id_per'], $conexion);
+						echo '<div class="item-comentarios">';
+						echo '<div class="coment-img">
+						<img src="./assets/images/usuario.png" title="Eduardo May">
+						</div>';
+						echo '<div class="coment-alinear">
+						<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
+						<div class="fch">'.
+						ucwords($com['fch_com'])	
+						.'</div>
+						<div class="coment">'.
+						ucwords($com['comentario'])	
+						.'</div>
+						</div>';
+						echo '<div class="clear"></div>';
+						echo '</div>';
+					}
 				}
 			?>
 		</div>
 		<!-- PIE DE PAGINA -->
-		<footer>
+		<footer id=footer>
 			<p>&copy; Todos los Derechos Reservados</p>
 			<P>Editor: Eduardo May</P>
 			<p>Cancun, Q. Roo. Mexico</p>
