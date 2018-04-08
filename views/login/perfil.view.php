@@ -41,6 +41,23 @@
                 <img src="<?= RUTA.'assets/avatars/'.$avatar['avatar'] ?>" alt="">
             </div>
             <div class="content-item">
+                <p>Rango: <span class=rango><?php 
+                    switch ($rango) {
+                        case '1':
+                            echo 'Miembro<span class="icon-star-empty gold"></span>';
+                            break;
+                        case '2':
+                            echo 'Moderador<span class="icon-star-empty gold"></span><span class="icon-star-empty gold"></span>';
+                            break;
+                        case '3':
+                            echo 'Administrador<span class="icon-star-empty gold"></span><span class="icon-star-empty gold"></span><span class="icon-star-empty gold"></span>';
+                            break;
+                        default:
+                    }
+                ?></p></span>
+            </div>
+            <div class="clear"></div>
+            <div class="content-item">
                 <label for="">Nombre:</label><input type="text" value="<?php echo $nombre  ?>" name="nombre" class=ani>
             </div>
             <div class="content-item">

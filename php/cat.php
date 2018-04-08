@@ -24,6 +24,8 @@
         $user = iniciarSesion('users', $conexion);
 		// OBTENER NOMBRE DE PERFIL
 		$nom = getPerfil($user['id_per'], $conexion);
+		// OBTENER EL AVATAR
+		$avatar = avatar($conexion);
 
 		$infoP = "
 		<div class=perfil>

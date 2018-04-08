@@ -27,6 +27,10 @@ li{	list-style: none; }
 	margin-top: 5em;
 }
 
+.margin-b{
+	margin-bottom: 5em;
+}
+
 /* CENTRAR TEXTO */
 .center{ text-align: center;}
 
@@ -263,6 +267,19 @@ footer{
 .content-item p{
 	font-size: 1.5em;
 	font-weight: bold;
+}
+
+.content-item .rango{
+	color: var(--color-primary);
+}
+
+.gold{
+	color: gold;
+	margin: 0;
+}
+
+.gold:nth-child(1){
+	margin-left: 10px;
 }
 
 .content-item label{

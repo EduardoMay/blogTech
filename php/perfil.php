@@ -21,6 +21,7 @@
 				$ape = $perfil['ape_per'];
 				$userN = $usuario['nom_user'];
 				$email = $perfil['cro_per'];
+				$rango = $usuario['tipo_user'];
 				break;
 			case 2:
 				$perfil = getPerfil($usuario['id_per'], $conexion);
@@ -28,9 +29,7 @@
 				$ape = $perfil['ape_per'];
 				$userN = $usuario['nom_user'];
 				$email = $perfil['cro_per'];
-				
-				
-				
+				$rango = $usuario['tipo_user'];
 				break;
 			case 3:
 				$perfil = getPerfil($usuario['id_per'], $conexion);
@@ -38,6 +37,7 @@
 				$ape = $perfil['ape_per'];
 				$userN = $usuario['nom_user'];
 				$email = $perfil['cro_per'];
+				$rango = $usuario['tipo_user'];
 				break;
 			default: header ('Location: '.RUTA.'index.php');
 		}    

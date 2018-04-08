@@ -86,7 +86,7 @@
 		<div class="content-noticia">
 			<div class="item-header">
 				<?php echo '<p class="item-titulo">'.utf8_decode($resultado['title_sec']).'</p>' ?>
-				<?php echo '<p class="cat">'.$cat['nom_cat'].'</p><p class="date">'.$resultado['fch_sec'].'</p><p class="autor">'.ucwords($per['nom_per']).'</p>' ?>
+				<?php echo '<p class="cat">'.$cat['nom_cat'].'</p><p class="date">'.$resultado['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).'</b></p>' ?>
 			</div>
 			<div class="clear"></div>
 			<div class="item-noticia">
@@ -112,26 +112,26 @@
 							Comentarios
 						</div><p>'.$ttlCom['count(*)'].' Comentarios</p>
 					';
-				}
-				if (isset($_SESSION['usuario'])) {
-					// Envio de comentarios
-					echo '
-						<div class="item-perfil">
-							<form action="./php/comentarios.php" method="post">
-								<div class="perfil-img">
-									<img src="./assets/images/usuario.png" title="Eduardo May">
-								</div>
-								<div class="perfil-comentario">
-									<textarea placeholder="Escribe tu comentario:" name="com" id="" cols="30" rows="10"></textarea>
-								</div>
-								<div class="clear"></div>
-								<div class="perfil-boton">
-									<input type="submit" value="Enviar" name=comentar>
-								</div>
-								<div class="clear"></div>
-							</form>
-						</div>
-					';
+					if (isset($_SESSION['usuario'])) {
+						// Envio de comentarios
+						echo '
+							<div class="item-perfil">
+								<form action="./php/comentarios.php" method="post">
+									<div class="perfil-img">
+										<img src="./assets/images/usuario.png" title="Eduardo May">
+									</div>
+									<div class="perfil-comentario">
+										<textarea placeholder="Escribe tu comentario:" name="com" id="" cols="30" rows="10"></textarea>
+									</div>
+									<div class="clear"></div>
+									<div class="perfil-boton">
+										<input type="submit" value="Enviar" name=comentar>
+									</div>
+									<div class="clear"></div>
+								</form>
+							</div>
+						';
+					}
 				}
 
 			?>

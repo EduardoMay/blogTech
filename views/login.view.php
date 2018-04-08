@@ -36,6 +36,7 @@
 					</div>
 					<input class="i_button_c" type="submit" name="" value="Ingresar">
 					<a href="<?php echo RUTA.'php/registro.php' ?>" title="" class="register">Registrate</a>
+					<!-- <a href="<?php echo RUTA.'php/contra.php' ?>" title="" class="register">¿Olvidaste tu contraseña?</a> -->
 				</form>
 			</div>
 		</div>

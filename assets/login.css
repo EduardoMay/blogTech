@@ -66,12 +66,21 @@ label{
   color: rgba(0,0,0,.6);
 }
 
+.data{
+  height: 80px;
+}
+
 .data input{
   margin-bottom: .7em;
   display: block;
   width: 100%;
-  padding: 1em;
+  padding: .3em;
   box-sizing: border-box;
+  transition: all .3s;
+}
+
+.data input:focus{
+  padding: 1em;
 }
 
 .data input:focus{

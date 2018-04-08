@@ -53,12 +53,21 @@ form{
   margin: auto;
 }
 
+.data{
+  height: 50px;
+}
+
 .data input{
   margin-bottom: .7em;
   display: block;
   width: 100%;
-  padding: .5rem;
+  padding: .3rem;
   box-sizing: border-box;
+  transition: all .3s;
+}
+
+.data input:focus{
+  padding: .8rem;
 }
 
 .register{
