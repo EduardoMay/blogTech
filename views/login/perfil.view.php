@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="<?= RUTA.'assets/avatars/'.$avatar['avatar'] ?>" type="image/x-icon">
     <link rel="stylesheet" href="../assets/blog_styles.css">
 	<link rel="stylesheet" href="../assets/fonts.css">
     <title>Perfil</title>
@@ -37,6 +38,9 @@
         </div>
         <form action="<?php echo RUTA.'php/perfil.php' ?>" method="post" enctype="multipart/form-data">
             <div class="content-item">
+                <img src="<?= RUTA.'assets/avatars/'.$avatar['avatar'] ?>" alt="">
+            </div>
+            <div class="content-item">
                 <label for="">Nombre:</label><input type="text" value="<?php echo $nombre  ?>" name="nombre" class=ani>
             </div>
             <div class="content-item">
@@ -51,6 +55,9 @@
             <div class="content-item">
                 <label for="">Nueva Contraseña:</label><input type="text" name="pass" class=ani>
             </div>
+            <div class="content-item_button">
+                <input type="submit" value="Guardar Datos" class=i_button_c name=datos>
+            </div>
             <div class="content-item">
                 <b>Subir una imagen menor a 2Mb</b>
             </div>
@@ -58,9 +65,6 @@
                 <label for="">Subir Avatar:</label><input type="file" name="imagen"> <input type="submit" value="Guardar Imagen" class="i_button_c float" name=avatar>
             </div>
             <div class="clear"></div>
-            <div class="content-item_button">
-                <input type="submit" value="Guardar Datos" class=i_button_c name=datos>
-            </div>
             <div class="content-item">
                 <?php if (!empty($error)): ?>
 			    	<?php echo $error;  ?>

@@ -12,8 +12,8 @@
             ':idsec'    => $sec,
             ':idper'    => $_SESSION['id_per']
         ]);
-        // echo BACK;
-        header ('Location: '.RUTA);
+        echo BACK;
+        // header ('Location: '.RUTA);
     } elseif(isset($_POST['like'])) {
         $statement = $conexion->prepare("INSERT INTO likes(id_per, id_sec, megusta) VALUES(:idP, :idS, :megusta)");
         $statement->execute([
@@ -21,7 +21,7 @@
             ':idS'  =>  $sec,
             ':megusta' =>  '1'
         ]);
-        // echo BACK;
-        header ('Location: '.RUTA);
+        echo BACK;
+        // header ('Location: '.RUTA);
     }
 ?>

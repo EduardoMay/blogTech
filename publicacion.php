@@ -61,20 +61,15 @@
 				</li>
 				<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
 					<ul class="subcat_menu">
-						<li><a href="" class="subcat_a">Moviles</a></li>
-						<li><a href="" class="subcat_a">Apps y Software</a></li>
-						<li><a href="" class="subcat_a">Juegos</a></li>
-						<li><a href="" class="subcat_a">Motor</a></li>
-						<li><a href="" class="subcat_a">Portatiles</a></li>
-						<li><a href="" class="subcat_a">Computadoras</a></li>
-						<li><a href="" class="subcat_a">Televisores</a></li>
-						<li><a href="" class="subcat_a">Gadgets</a></li>
-						<li><a href="" class="subcat_a">Realidad Virtual</a></li>
-						<li><a href="" class="subcat_a">Audio</a></li>
-						<li><a href="" class="subcat_a">Camaras</a></li>
+					<?php
+						$categorias = getCategorias('categorias', $conexion);
+						foreach ($categorias as $ctg) {
+							echo '<li><a href="'.RUTA.'php/cat.php?cat='.$ctg['id_cat'].'" class="subcat_a">'.$ctg['nom_cat'].'</a></li>';
+						}
+					?>
 					</ul>
 				</li>
-				<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
+				<li class="cat_menu"><a href="<?= RUTA.'php/tendencias.php' ?>" class="menu_a">Tendencias</a></li>
 			</menu>
 			<?php 
 				if (!empty($infoP)) {
@@ -106,17 +101,19 @@
 		<!-- COMENTARIOS -->
 		<div class="content-coment">
 			<?php
-				if ($resultado['statusC'] == 1 && isset($_SESSION['usuario'])) {
+				if ($resultado['statusC'] == 1) {
 					// CONTADOR DE COMENTARIOS
 					$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
 					$query->execute([':idsec'=>$idSec]);
 					$ttlCom = $query->fetch();
-
+	
 					echo '
 						<div class="content-coment-title" id=comentarios>
 							Comentarios
 						</div><p>'.$ttlCom['count(*)'].' Comentarios</p>
 					';
+				}
+				if (isset($_SESSION['usuario'])) {
 					// Envio de comentarios
 					echo '
 						<div class="item-perfil">
@@ -147,33 +144,54 @@
 				]);
 				$comentarios = $stm;
 				
-
-				if ($_SESSION['tipo_user'] == 2 || $_SESSION['tipo_user'] == 3) {
-					foreach ($comentarios as $com) {
-						$elimianar = 	'<form action='.RUTA.'php/comentarios.php method=post>
-											<div>
-											<input type=submit value=Eliminar name=eliminar class=eliminar>
-											<input type=text value='.$com['id_com'].' name=idcom style="visibility:hidden">
-											</div>
-										</form>';
-
-						$namep = getPerfil($com['id_per'], $conexion);
-						echo '<div class="item-comentarios">';
-						echo '<div class="coment-img">
-						<img src="./assets/images/usuario.png" title="Eduardo May">
-						</div>';
-						echo '<div class="coment-alinear">
-						<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
-						<div class="fch">'.
-						ucwords($com['fch_com'])	
-						.'</div>
-						<div class="coment">'.
-						ucwords($com['comentario'])	
-						.'</div>
-						'.$elimianar.'
-						</div>';
-						echo '<div class="clear"></div>';
-						echo '</div>';
+				if (!empty($_SESSION['usuario'])) {
+				
+					if ($_SESSION['tipo_user'] == 2 || $_SESSION['tipo_user'] == 3) {
+						foreach ($comentarios as $com) {
+							$elimianar = 	'<form action='.RUTA.'php/comentarios.php method=post>
+												<div>
+												<input type=submit value=Eliminar name=eliminar class=eliminar>
+												<input type=text value='.$com['id_com'].' name=idcom style="visibility:hidden">
+												</div>
+											</form>';
+	
+							$namep = getPerfil($com['id_per'], $conexion);
+							echo '<div class="item-comentarios">';
+							echo '<div class="coment-img">
+							<img src="./assets/images/usuario.png" title="Eduardo May">
+							</div>';
+							echo '<div class="coment-alinear">
+							<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
+							<div class="fch">'.
+							ucwords($com['fch_com'])	
+							.'</div>
+							<div class="coment">'.
+							ucwords($com['comentario'])	
+							.'</div>
+							'.$elimianar.'
+							</div>';
+							echo '<div class="clear"></div>';
+							echo '</div>';
+						}
+					}else {
+						foreach ($comentarios as $com) {
+							$namep = getPerfil($com['id_per'], $conexion);
+							echo '<div class="item-comentarios">';
+							echo '<div class="coment-img">
+							<img src="./assets/images/usuario.png" title="Eduardo May">
+							</div>';
+							echo '<div class="coment-alinear">
+							<div class="coment-nombre">'.ucwords($namep['nom_per']).' '.ucwords($namep['ape_per']).'</div>
+							<div class="fch">'.
+							ucwords($com['fch_com'])	
+							.'</div>
+							<div class="coment">'.
+							ucwords($com['comentario'])	
+							.'</div>
+							</div>';
+							echo '<div class="clear"></div>';
+							echo '</div>';
+						}
 					}
 				} else {
 					foreach ($comentarios as $com) {

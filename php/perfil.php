@@ -11,6 +11,9 @@
 	}
 	
 	if ($conexion == true) {
+		// OBTENER EL AVATAR
+		$avatar = avatar($conexion);
+		
 		switch ($usuario['tipo_user']) {
 			case 1:
 				$perfil = getPerfil($usuario['id_per'], $conexion);

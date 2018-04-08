@@ -179,11 +179,8 @@ header{
 	float: left;
 }
 
-span img{
-	margin: 0 5px;
-	width: 50px;
-    position: relative;
-    top: 35px;
+span{
+	margin: 5px;
 }
 
 .icon-play3{
@@ -195,12 +192,14 @@ span img{
 	width: 10%;
 	line-height: normal;
 	position: absolute;
-	top: 10px;
+	top: 0px;
 	text-align: left;
 	z-index: -10;
 	background: orange;
 	padding: .3em;
 	transition: all 500ms;
+	border: solid 2px var(--color-primary);
+	border-radius: 10px;
 }
 
 .perfil:hover .info{
@@ -255,6 +254,10 @@ footer{
 
 .content-item{
 	margin-top: 1em;
+}
+
+.content-item img{
+	width: 10%;
 }
 
 .content-item p{

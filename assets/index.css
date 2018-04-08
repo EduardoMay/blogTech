@@ -73,7 +73,8 @@ section{
 }
 
 img{
-	width: 20%;
+	padding: .5em;
+	width: 18%;
 }
 
 section, img{
