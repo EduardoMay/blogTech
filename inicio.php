@@ -88,14 +88,14 @@
 							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
 						}
 						echo '<div class="clear"></div>';
-						echo '</article>';
+						echo '</article>'; 
 					}
 				?>
 			</main>
 			<!-- LO MAS RECIENTE DE LAS NOTICIAS, PARTE DE LA DERECHA -->
 			<aside>
 				<?php
-					$noticia = $conexion->prepare("SELECT * FROM secciones");
+					$noticia = $conexion->prepare("SELECT * FROM secciones ORDER BY id_sec DESC");
 					$noticia->execute();
 					$resultado = $noticia;
 

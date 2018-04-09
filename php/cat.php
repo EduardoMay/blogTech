@@ -9,7 +9,7 @@
     // $statement = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat");
     // $statement->execute([':cat'=>$cat]);
 
-    $noticia = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat");
+    $noticia = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat ORDER BY id_sec DESC");
 	$noticia->execute([':cat'=>$cat]);
 	$resultado = $noticia;
 

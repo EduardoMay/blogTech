@@ -33,6 +33,7 @@ p{
     margin-top: 2.5em;
     padding: 12px;
     border: 2px solid var(--color-primary);
+    background-color: #fff;
 }
 
 .item-titulo{

@@ -3,7 +3,7 @@
     include_once '../services/funciones.php';
     $conexion = conexion($bd_config);
 
-    $noticia = $conexion->prepare("SELECT * FROM secciones WHERE ten_sec = 1");
+    $noticia = $conexion->prepare("SELECT * FROM secciones WHERE ten_sec = 1 ORDER BY id_sec DESC");
 	$noticia->execute();
 	$resultado = $noticia;
 

@@ -3,6 +3,7 @@
 /* NOTICIAS Y DESTACADO DEL BLOG */
 main{
 	border: 2px solid var(--color-primary);
+	background-color: #fff;
 }
 
 /* aside{
@@ -12,6 +13,8 @@ main{
 aside article{
 	border: 2px solid var(--color-primary);
 	margin-bottom: 1em;
+	background-color: #fff;
+	
 }
 
 .grid{
