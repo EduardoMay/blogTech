@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             <?php 
-                foreach ($resultado as $valores ) {
+                foreach ($usuarios as $valores ) {
                     echo '<tr><td>'.$valores['id_user'].'</td>'.'<td>'.$valores['nom_user'].'</td>';
                     echo '<td>';
                     echo $valores['tipo_user'];
@@ -49,7 +49,7 @@
                 <td>
                     <select name="user">
                         <?php
-                            foreach ($resultado as $user) {
+                            foreach ($usuarios as $user) {
                                 echo '<option value='.$user['id_user'].'>'.$user['nom_user'].'</option>';
                             }
                         ?>

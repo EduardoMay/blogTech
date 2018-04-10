@@ -42,11 +42,27 @@
 		<div class="grid">
 			<main>
 				<?php
-					foreach ($resultado as $info ) {
+					$total_com = null;
+					foreach ($secciones as $info ) {
 						$img = postimg($info['id_sec'], $conexion);
 
 						$per = nomP($info['id_per'], $conexion);
 						$cat = idCat($info['id_cat'], $conexion);
+
+						// CONTADOR DE LIKES
+						$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
+						$likes->execute([':idsec'=>$info['id_sec']]);
+						$megusta = $likes->fetch();
+
+
+						if ($info['statusC'] == 1) {
+							// CONTADOR DE COMENTARIOS
+							$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
+							$query->execute([':idsec'=>$info['id_sec']]);
+							$ttlCom = $query->fetch();
+							$total_com = '<p class=likes>'.$ttlCom['count(*)'].' Comentarios</p>';
+						}
+
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
 						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
@@ -57,25 +73,16 @@
 						echo '<div class="clear"></div>';
 						echo '<a href=publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
 						if (!isset($_SESSION['usuario'])) { //CUANDO NO ESTA LOGEADO ALGUN USUARIO
-							// CONTADOR DE LIKES
-							$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
-							$likes->execute([':idsec'=>$info['id_sec']]);
-							$megusta = $likes->fetch();
-
+							echo $total_com;
 							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
 						} else {
-							// CONTADOR DE LIKES
-							$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
-							$likes->execute([':idsec'=>$info['id_sec']]);
-							$megusta = $likes->fetch();
-
-
 							$query = $conexion->prepare("SELECT * FROM likes WHERE id_per = :idper AND id_sec = :idsec LIMIT 1");
 							$query->execute([
 								':idper' => $_SESSION['id_per'],
 								':idsec' => $info['id_sec']
 							]);
 							$mg = $query->fetch();
+
 							if ($mg == false) {
 								echo '<form action=./php/likes.php?val='.$info['id_sec'].' method=post>';
 								echo $like;
@@ -85,6 +92,7 @@
 								echo '<input type=submit class=i_button_r value="No me gusta" name="dontlike"></input>';
 								echo '</form>';
 							}
+							echo $total_com;
 							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
 						}
 						echo '<div class="clear"></div>';
@@ -97,9 +105,9 @@
 				<?php
 					$noticia = $conexion->prepare("SELECT * FROM secciones ORDER BY id_sec DESC");
 					$noticia->execute();
-					$resultado = $noticia;
+					$secciones = $noticia;
 
-					foreach ($resultado as $info ) {
+					foreach ($secciones as $info ) {
 						if ($info['ten_sec'] == 1) {
 							$per = nomP($info['id_per'], $conexion);
 							$cat = idCat($info['id_cat'], $conexion);

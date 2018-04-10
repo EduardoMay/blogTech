@@ -22,6 +22,17 @@
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
 		</div>";
+		if ($user['tipo_user'] == 3) {
+			# code...
+			$infoP = "
+			<div class=perfil>
+				<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+				<div class=info>
+					<a href=./php/admin.php>Admin</a>
+					<a href=./php/perfil.php>Ver Perfil</a>
+					<a href=./php/cerrar.php>Cerrar Sesion</a>
+			</div>";
+		}
 	}
 
 	$idSec = $_GET['var1'];
@@ -30,6 +41,8 @@
 		':id_sec'=>$idSec
 	]);
 	$resultado = $statement->fetch();
+
+	
 	$cat = idcat($resultado['id_cat'], $conexion);
 	$per = nomP($resultado['id_per'], $conexion);
 	$_SESSION['id_sec'] = $idSec;

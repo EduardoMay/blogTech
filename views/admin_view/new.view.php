@@ -35,9 +35,6 @@
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div>
 
-		<!-- CREAR MARGINT TOP -->
-		<!-- <div class="margin"></div> -->
-
 		<!-- SELECCION -->
 		<div class="margin"></div>
 		<main class="grid">
@@ -134,11 +131,5 @@
 			</form>
 		</main>
 		<div class="margin"></div>
-		<!-- PIE DE PAGINA -->
-		<!-- <footer>
-			<p>Todos los Derechos Reservados</p>
-			<P>Editor: Eduardo May</P>
-			<p>Cancun, Q. Roo. Mexico</p>
-		</footer> -->
 	</body>
 </html>

@@ -1,17 +1,16 @@
 <?php session_start();
     include_once '../services/config.php';
     include_once '../services/funciones.php';
-    $conexion = conexion($bd_config);
-    $cat = $_GET['cat'];
+	$conexion	= conexion($bd_config);
+	// OBTENER LA CATEGORIA DESDE GET
+    $cat		= $_GET['cat'];
 	
-	$nomCat = idcat($cat, $conexion);
+	$nomCat		= idcat($cat, $conexion); // categoria.views.php (11)
 
-    // $statement = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat");
-    // $statement->execute([':cat'=>$cat]);
-
+	// OBTENER LAS PUBLICACIONES SELECCIONADAS DESDE EL ID DE CATEGORIA
     $noticia = $conexion->prepare("SELECT * FROM secciones WHERE id_cat = :cat ORDER BY id_sec DESC");
 	$noticia->execute([':cat'=>$cat]);
-	$resultado = $noticia;
+	$secciones = $noticia;
 
     if(!isset($_SESSION['usuario'])) {
 		$infoP = "  
@@ -21,11 +20,9 @@
 		</div>";
 		$like = '';
 	}else{
-        $user = iniciarSesion('users', $conexion);
+        $user	= iniciarSesion('users', $conexion);
 		// OBTENER NOMBRE DE PERFIL
-		$nom = getPerfil($user['id_per'], $conexion);
-		// OBTENER EL AVATAR
-		$avatar = avatar($conexion);
+		$nom	= getPerfil($user['id_per'], $conexion);
 
 		$infoP = "
 		<div class=perfil>
@@ -35,6 +32,17 @@
 				<a href=".RUTA."/php/cerrar.php>Cerrar Sesion</a>
 		</div>";
 		$like = '<input type=submit class=i_button_r value=Like name=like></input>';
+		if ($user['tipo_user'] == 3) {
+			# code...
+			$infoP = "
+			<div class=perfil>
+				<p> <span class=icon-smile></span>".ucwords($nom['nom_per'])."<span class=icon-play3></span></p>
+				<div class=info>
+					<a href=./admin.php>Admin</a>
+					<a href=./php/perfil.php>Ver Perfil</a>
+					<a href=./php/cerrar.php>Cerrar Sesion</a>
+			</div>";
+		}
     }
 
     require_once '../views/categoria.view.php';

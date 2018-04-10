@@ -53,6 +53,18 @@
 						$per = nomP($info['id_per'], $conexion);
 						$cat = idCat($info['id_cat'], $conexion);
 						$img = postimg($info['id_sec'], $conexion); //OBTENER SU BANNER
+
+						
+						// CONTADOR DE LIKES
+						$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
+						$likes->execute([':idsec'=>$info['id_sec']]);
+						$megusta = $likes->fetch();
+
+						// CONTADOR DE COMENTARIOS
+						$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
+						$query->execute([':idsec'=>$info['id_sec']]);
+						$ttlCom = $query->fetch();
+						
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
 						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
@@ -63,19 +75,9 @@
 						echo '<div class="clear"></div>';
 						echo '<a href='.RUTA.'publicacion.php?var1='.$info['id_sec'].' title=Ver mas class=i_button_r>Ver mas</a>';
 						if (!isset($_SESSION['usuario'])) { //CUANDO NO ESTA LOGEADO ALGUN USUARIO
-							// CONTADOR DE LIKES
-							$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
-							$likes->execute([':idsec'=>$info['id_sec']]);
-							$megusta = $likes->fetch();
-
 							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
+							echo '<p class=likes>'.$ttlCom['count(*)'].' Comentarios</p>';
 						} else {
-							// CONTADOR DE LIKES
-							$likes = $conexion->prepare("SELECT count(*) FROM likes WHERE id_sec = :idsec");
-							$likes->execute([':idsec'=>$info['id_sec']]);
-							$megusta = $likes->fetch();
-
-
 							$query = $conexion->prepare("SELECT * FROM likes WHERE id_per = :idper AND id_sec = :idsec LIMIT 1");
 							$query->execute([
 								':idper' => $_SESSION['id_per'],
@@ -91,6 +93,7 @@
 								echo '<input type=submit class=i_button_r value="No me gusta" name="dontlike"></input>';
 								echo '</form>';
 							}
+							echo '<p class=likes>'.$ttlCom['count(*)'].' Comentarios</p>';
 							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
 						}
 						echo '<div class="clear"></div>';

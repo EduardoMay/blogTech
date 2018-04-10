@@ -3,8 +3,8 @@
     include '../services/config.php';
     include '../services/funciones.php';
 
-    $conexion = conexion($bd_config);
-    $sec = $_GET['val'];
+    $conexion   = conexion($bd_config);
+    $sec        = $_GET['val']; //OBTENER EL ID DE LA SECCION
 
     if (isset($_POST['dontlike'])) {
         $statement = $conexion->prepare("DELETE FROM likes WHERE id_sec = :idsec AND id_per = :idper");

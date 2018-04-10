@@ -7,6 +7,7 @@
     if (isset($_POST['comentar'])) {
         $com    = $_POST['com'];
         $fch    = date("Y-n-d");
+        // GUARDAR COMENTARIO
         $statement = $conexion->prepare("INSERT INTO comentarios (id_sec, id_per, comentario, fch_com, status) VALUES (:idsec, :idper, :com, :fch_com, :status)");
         $statement->execute([
             ':idsec'    =>  $_SESSION['id_sec'],
@@ -19,7 +20,9 @@
     }
     if (isset($_POST['eliminar'])) {
         $eliCom = $_POST['idcom'];
+        //ELIMIANR COMENTARIO
         $statement = $conexion->prepare("DELETE FROM comentarios WHERE id_com = :idcom");
         $statement->execute([':idcom'=>$eliCom]);
+
         header('Location: '.RUTA.'publicacion.php?var1='.$_SESSION['id_sec'].'#comentarios');
     }

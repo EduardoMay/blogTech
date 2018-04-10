@@ -18,7 +18,7 @@
     height: 100%;
 } */
 
-h1, h2, h3, h4, h5, h6, p{
+h1, h2, h3, h4, h5, h6, .item-noticia p{
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -67,6 +67,9 @@ p{
     margin: 1em auto;
     display: block;
 }
+
+.item-noticia li{list-style-type: circle; font-family: Arial, Helvetica, sans-serif;}
+
 /* ENVIAR COMENTARIOS Y CONTENIDO DE TODO */
 .content-coment{
     width: 90%;

@@ -2,7 +2,6 @@
 
 /* NOTICIAS Y DESTACADO DEL BLOG */
 main{
-	border: 2px solid var(--color-primary);
 	background-color: #fff;
 }
 
@@ -11,10 +10,8 @@ main{
 } */
 
 aside article{
-	border: 2px solid var(--color-primary);
 	margin-bottom: 1em;
 	background-color: #fff;
-	
 }
 
 .grid{
@@ -25,9 +22,13 @@ aside article{
 }
 
 article{
+	border-radius: 10px;
+	box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.6);
+	margin-bottom: .5rem;
 	padding: 1em;
 	font-family: Arial, Helvetica, sans-serif;
 	float: left;
+	border: 2px solid var(--color-primary);
 }
 /* TITULO DE LA NOTICIA */
 h1{
@@ -62,7 +63,9 @@ h1{
     margin-right: 10px;
     float: right;
     padding: .3em;
-    font-size: 1.1em;
+    font-size: .9rem;
+	line-height: 30px;
+	color: var(--color-primary);
 }
 
 section{

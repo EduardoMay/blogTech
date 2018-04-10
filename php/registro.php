@@ -7,15 +7,14 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // IMPORTA TODOS LOS DATOS
-        $usuario = $_POST['user'];
-        $nombre = $_POST['nom'] ;
-        $apellidos = $_POST['ape'];
-        $correo = $_POST['email'];
-        $password = $_POST['pass'];
+        $usuario    = $_POST['user'];
+        $nombre     = $_POST['nom'] ;
+        $apellidos  = $_POST['ape'];
+        $correo     = $_POST['email'];
+        $password   = $_POST['pass'];
         
         // VARIBLE PARA DAR MENSAJES DE ERROR
         $error = '';
-        // $avatar = ;
 
         // VALIDA QUE LOS CAMPOS ESTEN LLENOS
         if (empty($nombre) || empty($apellidos) || empty($correo) ) {
@@ -25,13 +24,15 @@
             $statement = $conexion->prepare('SELECT * FROM users WHERE nom_user = :nom_user LIMIT 1');
             $statement->execute([':nom_user'=>$usuario]);
             $resultado = $statement->fetch();
+
             if ($resultado != false) {
                 $error .= '<li class=error>Este usuario ya existe</li>';
             } else{
-                // PREPARA LA SENTENCIA SQL PARA VER QUE NO ESTE REGISTRADO UN USUARIO IGUAL
+                // PREPARA LA SENTENCIA SQL PARA VER QUE NO ESTE REGISTRADO UN CORREO IGUAL
                 $statement = $conexion->prepare('SELECT * FROM perfiles WHERE cro_per = :correo LIMIT 1');
                 $statement->execute([':correo'=>$correo]);
                 $resultado = $statement->fetch();
+
                 if ($resultado != false) {
                     $error .= '<li class=error>Este correo ya esta registrado</li>';
                 }
@@ -49,7 +50,8 @@
             if ($statement == true) {
                 // PREPARA LA SENTENCIA SQL PARA GUARDAR LOS DATOS A LA TABLA USUARIOS
                 $perfil = getPerfiles($correo, $conexion);
-                $id = $perfil['id_per'];
+                $id     = $perfil['id_per'];
+                
                 $statement = $conexion->prepare('INSERT INTO users (id_user, nom_user, pas_user, tipo_user, status, id_per) VALUES(null, :usuario, :password, :tipo, :status, :id)');
                 $statement->execute([
                     ':usuario'=>$usuario,
