@@ -36,6 +36,11 @@
 					echo $infoP;
 				}
 			?>
+			<div class=buscar>
+				<form action="<?= RUTA.'php/buscar.php' ?>" method=post>
+					<input type="search" name="buscar" placeholder="Buscar pos etiquetas" class=buscar-i>
+				</form>
+			</div>
 		</header>
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div> 

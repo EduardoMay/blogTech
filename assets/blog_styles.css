@@ -112,8 +112,8 @@ input:focus, textarea:focus{
 /* -------------------------------------------------------------------------------------------------- */
 /* HEADER-MENU-INGRESO */
 header{
-	display: block;
-	float: left;
+	display: flex;
+	/* float: left; */
 	width: 100%;
 	background: var(--color-primary);
 	height: 100px;
@@ -121,7 +121,26 @@ header{
 } /* CUADRO VERDE */
 
 /* HACER QUE SE VEA HORIZONTALMENTE */
-.title, .menu, .ingreso, .cat_menu{	float: left;	}
+.title, .menu, .ingreso, .cat_menu{	display: flex;}
+
+.buscar{
+	width: 15%;
+	line-height: 95px;
+	margin-left: 5%;
+}
+
+.buscar-i{
+	border: solid 2px var(--color-primary);
+	border-radius: 20px;
+	outline: 0px;
+	transition: all .3s;
+	padding: 5px 0px;
+}
+
+.buscar-i:focus{
+	border: solid 2px red;
+	padding: 5px 10px;
+}
 
 /* COLOR A LOS TITULOS Y TAMAÑO */
 .title_a, .menu_a, .ingreso a{
@@ -130,13 +149,13 @@ header{
 	transition: all 500ms;
 }
 
-.title_a, .menu_a{	padding: 1em;	}
+.title_a, .menu_a{	padding: 0em 1em;	}
 
 .title{	font-size: 2em;	}
 
-.menu, .ingreso{	margin-left: 20%;	}
+.menu, .ingreso{	margin-left: 10%;	}
 
-.ingreso a{	padding: 1em .5em; }
+.ingreso a{	padding: 0em .5em; }
 
 /* EFECTOS AL PASAR EL MOUSE */
 .menu_a:hover{	border-bottom: 1px solid orange;	}
@@ -334,20 +353,48 @@ caption{
 	line-height: 60px;
 }
 
+tr td:nth-child(1){
+	width: 10%;
+}
+
 table select{
 	transition: all 500ms;
 }
 
 
 table input, table textarea{
-	width: 100%;
-	font-family: Arial, Helvetica, sans-serif;
-	box-sizing: border-box;
-	transition: all .3s;
+	margin-bottom: .3rem;
+    display: block;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    transition: all .3s;
 }
 
 table textarea{
 	padding: .5em;
+}
+
+.input-mas{
+	width: 100px;
+    display: inline-block;
+    margin-left: .3rem;
+}
+
+.mas{
+	width: 40px;
+	line-height: 20px;
+	background: red;
+	text-align: center;
+	color: white;
+	padding: .2rem;
+	cursor: pointer;
+	border: 2px solid red;
+	transition: all .3s;
+}
+.mas:hover{
+	background: white;
+	color: red;
 }
 
 .newpost textarea:focus{

@@ -71,6 +71,13 @@
 						<tr>
 							<td>Titulo:</td>
 							<td>
+								<input type="text" name="array[]" class="input-mas">
+        						<div class=mas>Mas</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Titulo:</td>
+							<td>
 								<input type="text" name="title">
 							</td>
 						</tr>
@@ -131,5 +138,13 @@
 			</form>
 		</main>
 		<div class="margin"></div>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script>
+			$(function () { 
+				$('.mas').click(function(){
+					$('.mas').before('<input type="text" name="array[]" class="input-mas">');
+				});
+			});
+		</script>
 	</body>
 </html>

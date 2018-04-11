@@ -23,11 +23,42 @@
 	// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// echo $_POST['boton'];
 	// }
-	$likes = $conexion->prepare("SELECT * FROM likes");
-	$likes->execute();
 
-	foreach ($likes as $like ) {
-		if ($like['id_sec'] == 10 ) {
-			echo $like['megusta'];
+	if (isset($_POST['buscar'])) {
+		$statement = $conexion->prepare("SELECT * FROM etiquetas WHERE etiqueta = :etiqueta");
+		$statement->execute([':etiqueta'=>$_POST["buscar"]]);
+		$etiqueta = $statement->fetch();
+		if ($etiqueta != false) {
+			echo 'ok<br>';
+			echo $etiqueta['etiqueta'];
+		}else {
+			echo 'error';
 		}
 	}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		input{
+			border: solid 1px red;
+			border-radius: 10px;
+			outline: 0px;
+			transition: all .3s;
+		}
+
+		input:focus{
+			padding: 1px 10px;
+		}
+	</style>
+</head>
+<body>
+	<form action="pruebas.php" method=post>
+		<input type="search" name="buscar">
+	</form>
+</body>
+</html>
