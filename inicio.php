@@ -60,17 +60,24 @@
 						$megusta = $likes->fetch();
 
 
-						if ($info['statusC'] == 1) {
+						if ($info['statusC'] ==  1) {
 							// CONTADOR DE COMENTARIOS
 							$query = $conexion->prepare("SELECT count(*) FROM comentarios WHERE id_sec = :idsec");
 							$query->execute([':idsec'=>$info['id_sec']]);
 							$ttlCom = $query->fetch();
 							$total_com = '<p class=likes>'.$ttlCom['count(*)'].' Comentarios</p>';
+						}else {
+							$total_com = '';
 						}
 
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
 						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
+						$etis = $conexion->prepare("SELECT * FROM etiquetas WHERE id_sec = :idsec");
+						$etis->execute([':idsec'=>$info['id_sec']]);
+						foreach ($etis as $eti) {
+							echo '<p class=sub_cat>#'.$eti['etiqueta'].'</p>';
+						}
 						echo '<section>';
 						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 						echo '</section>';
@@ -97,7 +104,9 @@
 								echo '<input type=submit class=i_button_r value="No me gusta" name="dontlike"></input>';
 								echo '</form>';
 							}
-							echo $total_com;
+							if (!empty($total_com)) {
+							  echo $total_com;
+							}
 							echo '<p class=likes>'.$megusta['count(*)'].' Likes</p>';
 						}
 						echo '<div class="clear"></div>';

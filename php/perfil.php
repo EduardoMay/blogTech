@@ -65,7 +65,7 @@
 			$tamanio_imagen = $_FILES['imagen']['size'];
 	
 			if ($tipo_imagen == 'image/jpeg' || $tipo_imagen == 'image/jpg' || $tipo_imagen == 'image/png' || $tipo_imagen == 'image/gif') {
-				if ($tamanio_imagen <= 2000000) {
+				if ($tamanio_imagen <= 4000000) {
 					subirImagen($nombre_imagen, $tipo_imagen, $tamanio_imagen, $conexion);
 				} else {
 					$error = '<li class=error>FAVOR SUBIR UNA IMAGEN DE MENOR TAMAÑO(Recomendado: 1Mb)</li>';

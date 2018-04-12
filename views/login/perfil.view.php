@@ -76,7 +76,7 @@
                 <input type="submit" value="Guardar Datos" class=i_button_c name=datos>
             </div>
             <div class="content-item">
-                <b>Subir una imagen menor a 2Mb</b>
+                <b>Subir una imagen menor a 4Mb</b>
             </div>
             <div class="content-item">
                 <label for="">Subir Avatar:</label><input type="file" name="imagen"> <input type="submit" value="Guardar Imagen" class="i_button_c float" name=avatar>

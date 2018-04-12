@@ -73,6 +73,11 @@
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
 						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
+						$etis = $conexion->prepare("SELECT * FROM etiquetas WHERE id_sec = :idsec");
+						$etis->execute([':idsec'=>$info['id_sec']]);
+						foreach ($etis as $eti) {
+							echo '<p class=sub_cat>#'.$eti['etiqueta'].'</p>';
+						}
 						echo '<section>';
 						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 						echo '</section>';

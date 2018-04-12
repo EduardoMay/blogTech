@@ -21,6 +21,7 @@
 			<div class=info>
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
+			</div>
 		</div>";
 		if ($user['tipo_user'] == 3) {
 			# code...
@@ -31,6 +32,7 @@
 					<a href=./php/admin.php>Admin</a>
 					<a href=./php/perfil.php>Ver Perfil</a>
 					<a href=./php/cerrar.php>Cerrar Sesion</a>
+				</div>
 			</div>";
 		}
 	}
@@ -186,7 +188,7 @@
 							<div class="coment">'.
 							ucwords($com['comentario'])	
 							.'</div>
-							'.$elimianar.'
+							'.$elimianar.'							
 							</div>';
 							echo '<div class="clear"></div>';
 							echo '</div>';

@@ -153,7 +153,7 @@ header{
 
 .title_a, .menu_a{	padding: 0em 1em;	}
 
-.title{	font-size: 2em;	}
+.title{	font-size: 2em;	width: 30%;}
 
 .menu, .ingreso{	margin-left: 10%;	}
 
@@ -201,7 +201,7 @@ header{
 .perfil{
 	line-height: 100px;
 	color: white;
-	margin-left: 20%;
+	margin-left: 5%;
 	float: left;
 }
 

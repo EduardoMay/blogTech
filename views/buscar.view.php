@@ -26,7 +26,7 @@
 		<menu type="context toolbar" class="menu">
 			<li class="cat_menu"><a href="<?php echo RUTA ?>" class="menu_a">Inicio</a>
 			</li>
-			<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
+			<li class="cat_menu"><p class="menu_a">Noticias</p>
 				<ul class="subcat_menu">
 				<?php
 					$cat = getCategorias('categorias', $conexion);
@@ -36,7 +36,7 @@
 				?>
 				</ul>
 			</li>
-			<li class="cat_menu"><a href="" class="menu_a">Tendencias</a></li>
+			<li class="cat_menu"><a href="<?= RUTA.'php/tendencias.php' ?>" class="menu_a">Tendencias</a></li>
 		</menu>
 		<?php 
 			if (!empty($infoP)) {
@@ -73,6 +73,11 @@
 						echo '<article>';
 						echo '<h1 class=title-p>'.utf8_decode($info['title_sec']).'</h1>';
 						echo '<p class=cat>'.$cat['nom_cat'].'</p><p class=date>'.$info['fch_sec'].'</p><p class="autor">Escritor: <b>'.ucwords($per['nom_per']).' '.ucwords($per['ape_per']).'</b></p>';
+						$etis = $conexion->prepare("SELECT * FROM etiquetas WHERE id_sec = :idsec");
+						$etis->execute([':idsec'=>$info['id_sec']]);
+						foreach ($etis as $eti) {
+							echo '<p class=sub_cat>#'.$eti['etiqueta'].'</p>';
+						}
 						echo '<section>';
 						echo '<p>'.utf8_decode($info['infore_sec']).'</p>';
 						echo '</section>';

@@ -26,6 +26,7 @@
 			<div class=info>
 				<a href=".RUTA."/php/perfil.php>Ver Perfil</a>
 				<a href=".RUTA."/php/cerrar.php>Cerrar Sesion</a>
+			</div>
 		</div>";
 		$like = '<input type=submit class=i_button_r value=Like  name=like></input>';
 		if ($user['tipo_user'] == 3) {
@@ -37,6 +38,7 @@
 					<a href=./admin.php>Admin</a>
 					<a href=./php/perfil.php>Ver Perfil</a>
 					<a href=./php/cerrar.php>Cerrar Sesion</a>
+				</div>
 			</div>";
 		}
     }
