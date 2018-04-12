@@ -89,6 +89,11 @@
 					echo $infoP;
 				}
 			?>
+			<div class=buscar>
+				<form action="<?= RUTA.'php/buscar.php' ?>" method=post>
+					<input type="search" name="buscar" placeholder="Buscar por etiquetas" class="buscar-i">
+				</form>
+			</div>
 		</header>
 		<!-- RESETEAR FLOAT -->
 		<div class="clear"></div>
@@ -201,6 +206,7 @@
 							<div class="coment">'.
 							ucwords($com['comentario'])	
 							.'</div>
+							<input type=submit value=1>
 							</div>';
 							echo '<div class="clear"></div>';
 							echo '</div>';

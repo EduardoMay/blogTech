@@ -27,13 +27,13 @@
 				$fch	= $_POST['fch'];
 				$stsC	= $_POST['stsc'];
 				$fav	= $_POST['fav'];
-	
+				$etiquetas = $_POST["array"];
 				
 				$nombre_imagen = $_FILES['imagen']['name'];
 				$tipo_imagen = $_FILES['imagen']['type'];
 				$tamanio_imagen = $_FILES['imagen']['size'];
 				
-				$resultado = setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $nombre_imagen, $conexion);
+				$resultado = setSeccion($idCat, $idPer, $title, $des, $info, $fch, $stsC, $fav, $nombre_imagen, $etiquetas, $conexion);
 				// $postimg = postImagen($nombre_imagen, $tipo_imagen, $tamanio_imagen, $conexion);
 			}
 		}

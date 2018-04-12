@@ -86,3 +86,20 @@ img{
 section, img{
 	float: left;
 }
+
+@media only screen and (max-width: 600px) {
+	header{
+		height: auto;
+		display: block;
+	}
+	aside{
+		display: none;
+	}
+
+	.grid{
+		display: grid;
+		margin: .5em;
+		grid-gap: 10px;
+		grid-template-columns: 1fr;
+	}
+}

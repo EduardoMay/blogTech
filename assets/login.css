@@ -74,7 +74,7 @@ label{
   margin-bottom: .7em;
   display: block;
   width: 100%;
-  padding: .3em;
+  padding: 0 1em;
   box-sizing: border-box;
   transition: all .3s;
 }
@@ -94,4 +94,20 @@ label{
   text-decoration: none;
   color: var(--color-primary);
   font-family: arial;
+}
+
+@media only screen and (max-width: 600px) {
+  .izq, .der{
+    float: initial;
+    width: 100%;
+  }
+  .der{
+    margin-bottom: 2em;
+  }
+  .p_title{
+    font-size: 2.5em;
+  }
+  .p_subtitle{
+    font-size: 2em;
+  }
 }

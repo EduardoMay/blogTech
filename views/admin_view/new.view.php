@@ -69,7 +69,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>Titulo:</td>
+							<td>Etiquetas:</td>
 							<td>
 								<input type="text" name="array[]" class="input-mas">
         						<div class=mas>Mas</div>

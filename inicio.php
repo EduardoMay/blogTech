@@ -19,7 +19,7 @@
 			<menu type="context toolbar" class="menu">
 				<li class="cat_menu"><a href="" class="menu_a">Inicio</a>
 				</li>
-				<li class="cat_menu"><a href="" class="menu_a">Noticias</a>
+				<li class="cat_menu"><p class="menu_a">Noticias</p>
 					<ul class="subcat_menu">
 					<?php
 						$cat = getCategorias('categorias', $conexion);
@@ -38,7 +38,7 @@
 			?>
 			<div class=buscar>
 				<form action="<?= RUTA.'php/buscar.php' ?>" method=post>
-					<input type="search" name="buscar" placeholder="Buscar pos etiquetas" class=buscar-i>
+					<input type="search" name="buscar" placeholder="Buscar por etiquetas" class="buscar-i">
 				</form>
 			</div>
 		</header>

@@ -4,6 +4,8 @@
         define('RUTA','http://localhost/blog/');
     } elseif ($_SERVER['HTTP_HOST'] == '192.168.1.71') {
         define('RUTA','http://192.168.1.71/blog/');
+    } elseif ($_SERVER['HTTP_HOST'] == '192.168.13.22') {
+        define('RUTA','http://192.168.13.22/blog/');
     }
 
     // CONSTANTES

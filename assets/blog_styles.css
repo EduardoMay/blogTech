@@ -124,20 +124,22 @@ header{
 .title, .menu, .ingreso, .cat_menu{	display: flex;}
 
 .buscar{
-	width: 15%;
+	width: 20%;
 	line-height: 95px;
 	margin-left: 5%;
 }
 
 .buscar-i{
+	width: 40%;
 	border: solid 2px var(--color-primary);
 	border-radius: 20px;
 	outline: 0px;
 	transition: all .3s;
-	padding: 5px 0px;
+	padding: 5px 3px;
 }
 
-.buscar-i:focus{
+.buscar-i:focus {
+	width: 80%;
 	border: solid 2px red;
 	padding: 5px 10px;
 }
@@ -158,7 +160,7 @@ header{
 .ingreso a{	padding: 0em .5em; }
 
 /* EFECTOS AL PASAR EL MOUSE */
-.menu_a:hover{	border-bottom: 1px solid orange;	}
+.menu_a:hover{	box-shadow: 0px 3px 0 0px red inset, 0px -3px 0 0px red inset;}
 .ingreso a:hover{ background: orange;}
 
 /* ESTILOS DEL SUBMENU */
@@ -417,4 +419,51 @@ table textarea{
 
 .viewusers td{
 	padding: .5em;
+}
+
+@media only screen and (max-width: 600px) {
+	.title_a{
+		margin: auto;
+	}
+
+	.menu{
+		margin-left: 0;
+	}
+
+	.ingreso a{
+		margin: auto;
+	}
+
+	.subcat_menu{
+		width: 100px;
+		clear: both;
+    	display: none;
+    	position: inherit;
+    	background: orange;
+    	padding: .5em;
+    	top: 0;
+    	left: 0;
+    	z-index: 1;
+    	transition: all 500ms;
+	}
+	.cat_menu:hover .subcat_menu{
+		display: inline-block;
+	}
+	.buscar{
+		margin: 0;
+		width: 100%;
+	}
+	.buscar-i{
+		width: 100%;
+	}
+	.info{
+		width: 25%;
+		top: 50%;
+		left: -10px;
+	}
+	.perfil:hover .info{
+		z-index: 10;
+		top: 50%;
+		left: 0;
+	}
 }

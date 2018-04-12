@@ -43,6 +43,11 @@
 				echo $infoP;
 			}
 		?>
+		<div class=buscar>
+			<form action="<?= RUTA.'php/buscar.php' ?>" method=post>
+				<input type="search" name="buscar" placeholder="Buscar por etiquetas" class="buscar-i">
+			</form>
+		</div>
     </header>
     <div class="clear"></div>
     <div class="grid">

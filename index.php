@@ -30,6 +30,7 @@
 			<div class=info>
 				<a href=./php/perfil.php>Ver Perfil</a>
 				<a href=./php/cerrar.php>Cerrar Sesion</a>
+			</div>
 		</div>";
 		$like	= '<input type=submit class=i_button_r value="Me gusta" name=like></input>';
 
@@ -44,6 +45,7 @@
 					<a href=./php/admin.php>Admin</a>
 					<a href=./php/perfil.php>Ver Perfil</a>
 					<a href=./php/cerrar.php>Cerrar Sesion</a>
+				</div>
 			</div>";
 			include './inicio.php';
 		}

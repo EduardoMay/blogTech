@@ -24,7 +24,7 @@
 		// echo $_POST['boton'];
 	// }
 
-	if (isset($_POST['buscar'])) {
+	if (isset($_POST['hola'])) {
 		$statement = $conexion->prepare("SELECT * FROM etiquetas WHERE etiqueta = :etiqueta");
 		$statement->execute([':etiqueta'=>$_POST["buscar"]]);
 		$etiqueta = $statement->fetch();
@@ -44,21 +44,20 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<style>
-		input{
-			border: solid 1px red;
-			border-radius: 10px;
-			outline: 0px;
-			transition: all .3s;
-		}
-
-		input:focus{
-			padding: 1px 10px;
+		input::before{
+			position: absolute;
+			content: "hola";
+			width: 20px;
+			heigth: 20px;
+			height: 20px;
+			background: red;
+			right: 10px;
 		}
 	</style>
 </head>
 <body>
 	<form action="pruebas.php" method=post>
-		<input type="search" name="buscar">
+		<input type="submit" name="hola" id="">
 	</form>
 </body>
 </html>
