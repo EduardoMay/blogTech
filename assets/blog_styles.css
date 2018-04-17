@@ -271,7 +271,15 @@ footer{
 /* ------------------------------------------------------------------------------------------------------------- */
 
 /* PERFIL.VIEW.PHP */
+.content-perfil{
+	width: 85%;
+	margin: auto;
+	text-align: center;
+	font-family: var(--font-primary);
+}
+
 .content-main{
+	display: flex;
 	margin: auto;
 	width: 85%;
 	padding: 1em;
@@ -280,6 +288,10 @@ footer{
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.6);
+}
+
+.content-main form, .content-perfil-item{
+	width: 50%;
 }
 
 .content-item{
@@ -323,6 +335,16 @@ footer{
 
 .content-item label, .content-item .ani {
 	padding: 1em;
+}
+
+.content-perfil-item .c-p-i-t{
+	margin-top: 1em;
+}
+
+.content-perfil-item h1{
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: center;
 }
 
 /* ------------------------------------------------------------------------------------------------------------- */

@@ -197,4 +197,41 @@
 		return $error;
 	}
 
-	
+	/* IMPRIMIR EL RANGO, LOS PUNTOS Y ESTRELLAS
+	*  ./PHP/PUBLICACION PHP (210, 253, 290)
+	*/
+	function rangoComentario($rango){
+		if ($rango >= 10 AND $rango < 20) {
+			echo '<b>Puntos: '.$rango.'</b>';
+			for ($i=0; $i < 1; $i++) { 
+				# code...
+				echo '<span class="icon-star-full star"></span>';
+			}
+		} elseif ($rango >= 20 AND $rango < 40) {
+			echo '<b>Puntos: '.$rango.'</b>';
+			for ($i=0; $i < 2; $i++) { 
+				# code...
+				echo '<span class="icon-star-full star"></span>';
+			}
+		} elseif ($rango >= 40 AND $rango < 60) {
+			echo '<b>Puntos: '.$rango.'</b>';
+			for ($i=0; $i < 3; $i++) { 
+				# code...
+				echo '<span class="icon-star-full star"></span>';
+			}
+		} elseif ($rango >= 60 AND $rango < 80) {
+			echo '<b>Puntos: '.$rango.'</b>';
+			for ($i=0; $i < 4; $i++) { 
+				# code...
+				echo '<span class="icon-star-full star"></span>';
+			}
+		} elseif ($rango >= 80 AND $rango < 100) {
+			echo '<b>Puntos: '.$rango.'</b>';
+			for ($i=0; $i < 1; $i++) { 
+				# code...
+				echo '<span class="icon-star-full star"></span>';
+			}
+		} else{
+			echo '<b>Puntos: '.$rango.'</b>';
+		}
+	}
