@@ -19,7 +19,7 @@
 		// echo $_POST['boton'];
 	// }
 	function rango($rango, $iduser, $idcom, $conexion) {
-		$statement = $conexion->prepare("SELECT * FROM rango_com WHERE id_user = :iduser AND id_com = :idcom");
+		$statement = $conexion->prepare("SELECT * FROM rango_com WHERE id_per = :iduser AND id_com = :idcom");
 		$statement->execute([
 			':iduser'=>$iduser,
 			':idcom'=>$idcom
@@ -29,9 +29,9 @@
 		if ($resultado == true) {
 			echo 'Ya has calificado';
 		} else{
-			$stm = $conexion->prepare("INSERT INTO rango_com(id_user, id_com, calif) VALUES(:iduser, :idcom, :calif)");
+			$stm = $conexion->prepare("INSERT INTO rango_com(id_per, id_com, calif) VALUES(:idper, :idcom, :calif)");
 			$stm->execute([
-				':iduser'=>$iduser,
+				':idper'=>$iduser,
 				':idcom'=>$idcom,
 				':calif'=>$rango
 			]);
@@ -39,7 +39,7 @@
 		}
 	}
 	if (isset($_POST['1'])) {
-		$res = rango('1', '1', '12', $conexion);
+		$res = rango('1', '22', '12', $conexion);
 		echo $res;
 	} elseif (isset($_POST["2"])) {
 		$res = rango('2', '1', '12', $conexion);
@@ -55,45 +55,46 @@
 		echo $res;		
 	}
 
-	$statement = $conexion->prepare("SELECT * FROM rango_com WHERE id_com = 12");
+	$statement = $conexion->prepare("SELECT * FROM rango_com WHERE id_com = 16");
 	$statement->execute();
 	$rango = 0;
 	foreach ($statement as $calif) {
 		$rango = $rango + $calif['calif'];
 	}
-
-	switch ($rango) {
-		case $rango >= 10 AND $rango <= 20:
-			for ($i=0; $i < 1; $i++) { 
-				echo '<span class="icon-star-full"></span>';
-			}
-			break;
-		case $rango > 20 AND $rango <= 40:
-			for ($i=0; $i < 2; $i++) { 
-				echo '<span class="icon-star-full"></span>';
-			}
-			break;
-		case $rango > 40 && $rango <= 60:
-			for ($i=0; $i < 2; $i++) { 
-				echo '<span class="icon-star-full"></span>';
-			}
-			break;
-		case $rango > 60 && $rango <= 80:
-			for ($i=0; $i < 2; $i++) { 
-				echo '<span class="icon-star-full"></span>';
-			}
-			break;
-		case $rango > 80 && $rango <= 100:
-			for ($i=0; $i < 2; $i++) { 
-				echo '<span class="icon-star-full"></span>';
-			}
-			break;
-		default:
+	if ($rango >= 10 AND $rango < 20) {
+		for ($i=0; $i < 1; $i++) { 
 			# code...
-			break;
+			echo 'Puntos: '.$rango;
+			echo '<span class="icon-star-full"></span>';
+		}
+	} elseif ($rango >= 20 AND $rango < 40) {
+		for ($i=0; $i < 2; $i++) { 
+			# code...
+			echo 'Puntos: '.$rango;
+			echo '<span class="icon-star-full"></span>';
+		}
+	} elseif ($rango >= 40 AND $rango < 60) {
+		for ($i=0; $i < 3; $i++) { 
+			# code...
+			echo 'Puntos: '.$rango;
+			echo '<span class="icon-star-full"></span>';
+		}
+	} elseif ($rango >= 60 AND $rango < 80) {
+		for ($i=0; $i < 4; $i++) { 
+			# code...
+			echo 'Puntos: '.$rango;
+			echo '<span class="icon-star-full"></span>';
+		}
+	} elseif ($rango >= 80 AND $rango < 100) {
+		for ($i=0; $i < 1; $i++) { 
+			# code...
+			echo 'Puntos: '.$rango;
+			echo '<span class="icon-star-full"></span>';
+		}
+	} else{
+		echo 'Puntos: '.$rango;
 	}
-
-	echo $rango;
+	// echo $rango;
 ?>
 <!DOCTYPE html>
 <html lang="en">

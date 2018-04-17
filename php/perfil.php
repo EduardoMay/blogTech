@@ -54,7 +54,6 @@
 			$newEmail	= $_POST['email'];
 			$newPass	= $_POST['pass'];
 			$resultado	= updatePerfil($id, $newNombre, $newApe, $newUser, $newEmail, $newPass, $conexion);
-			$error		= '<li class=error>RECARGAR LA PAGINA PARA VER LOS CAMBIOS</li>';
 			header('Location: '.RUTA.'php/perfil.php');
 		}
 	}
@@ -74,5 +73,15 @@
 				$error = '<li class=error>FAVOR DE SELECCIONAR UNA IMAGEN (jpeg, jpg, png, gif)</li>';
 			}
 	}
+
+	$rangos = $conexion->prepare('SELECT id_per, sum(calif) as rango from rango_com group by id_per order by rango desc');
+	// $rango = $conexion->prepare('SELECT * from rango_com');
+	$rangos->execute();
+	$allRangos = $rangos;
+
+	$rangoPerfil = $conexion->prepare('SELECT id_per, sum(calif) as rango from rango_com  where id_per = :id_per order by rango desc;');
+	$rangoPerfil->execute([':id_per'=>$_SESSION['id_per']]);
+	$rangoPerfil = $rangoPerfil->fetch();
+
 	require '../views/login/perfil.view.php';
 	
